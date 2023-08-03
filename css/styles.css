@@ -14,6 +14,20 @@ li {
   list-style-type: none;
 }
 
+a {
+  color: #518AD5;
+  text-decoration-color: #D5D5D5;
+}
+
+a:visited {
+  color: #518AD5;
+  text-decoration-color: #D5D5D5;
+}
+
+input {
+  padding-left: 5px;
+}
+
 .tittle {
   text-align: center;
   color: #518AD5;
@@ -58,7 +72,7 @@ div:last-child {
   justify-content: center;
 }
 div input.check {
-  width: 250px;
+  width: 300px;
   height: 30px;
   border-radius: 10px;
   border: none;
@@ -69,6 +83,7 @@ div span {
 
 label {
   place-self: start;
+  margin-left: 5px;
 }
 
 .disclaimer {
@@ -85,11 +100,24 @@ label {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  gap: 5px;
+  gap: 10px;
   margin-bottom: 5vh;
 }
 .img-container img {
   width: 100px;
+}
+
+button {
+  margin: 1rem 0 1rem 0.7rem;
+  padding: 0.5rem;
+  width: 80px;
+  align-self: end;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  background-color: #518AD5;
+  border: none;
+  color: #E3E5EF;
+  font-weight: 600;
 }
 
 body {

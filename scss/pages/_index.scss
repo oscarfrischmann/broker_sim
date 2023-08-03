@@ -32,7 +32,7 @@ div {
     }
 
     input.check {
-        width: 250px;
+        width: 300px;
         height: 30px;
         border-radius: 10px;
         border: none;
@@ -45,6 +45,7 @@ div {
 
 label {
     place-self: start;
+    margin-left: 5px;
 }
 
 .disclaimer {
@@ -57,10 +58,22 @@ label {
 }
 
 .img-container {
-    @include flex(center, center, row, 5px);
+    @include flex(center, center, row, 10px);
     margin-bottom: 5vh;
 
     img {
         width: 100px;
     }
+}
+button {
+    margin: 1rem 0 1rem 0.7rem;
+    padding: 0.5rem;
+    width: 80px;
+    align-self: end;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: #518AD5;
+    border: none;
+    color: #E3E5EF;
+    font-weight: 600;
 }

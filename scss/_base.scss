@@ -18,7 +18,7 @@ $green: #7BD6A9;
     gap: $gap;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -30,4 +30,17 @@ html {
 
 li {
     list-style-type: none;
+}
+
+a {
+    color: $buttonMain;
+    text-decoration-color: $labelColor;
+}
+
+a:visited {
+    color: $buttonMain;
+    text-decoration-color: $labelColor;
+}
+input {
+    padding-left: 5px;
 }
