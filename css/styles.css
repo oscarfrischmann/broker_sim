@@ -10,14 +10,91 @@ html {
   background-color: #2F4057;
 }
 
+li {
+  list-style-type: none;
+}
+
+.tittle {
+  text-align: center;
+  color: #518AD5;
+  text-transform: uppercase;
+  border-top: solid 1px #707070;
+  border-bottom: solid 1px #707070;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 49px;
+  margin: 4rem 2rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: initial;
+}
+.form__signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.form__last {
+  place-self: center;
+  margin: 1rem 0 3rem 0;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  place-self: end;
+}
+div:last-child {
+  flex-direction: row;
+  justify-content: center;
+}
+div input.check {
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+div span {
+  font-size: 0.8rem;
+}
+
+label {
+  place-self: start;
+}
+
+.disclaimer {
+  width: 50vw;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.img-container {
+  width: 80%;
+  margin: 4rem auto;
+}
+.img-container img {
+  width: 100px;
+}
+
 body {
-  color: aliceblue;
+  color: #E3E5EF;
 }
 
 .tittle__secondary {
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
-  color: #E3E5EF;
   text-align: center;
   margin: 4rem;
 }
@@ -33,11 +110,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: initial;
+  gap: initial;
   padding: 0.5rem 1rem;
   background-color: #455E80;
-}
-.header.mobile li {
-  list-style-type: none;
 }
 .header.mobile .burguer {
   font-size: 2rem;
@@ -115,9 +191,10 @@ body {
   border-radius: 15px;
   box-shadow: 3px 3px 10px black;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: initial;
   font-size: 1.5rem;
   color: #E3E5EF;
   text-align: center;

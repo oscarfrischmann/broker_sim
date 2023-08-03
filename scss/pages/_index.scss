@@ -1,0 +1,66 @@
+.tittle {
+    text-align: center;
+    color: $logo;
+    text-transform: uppercase;
+    border-top: solid 1px $logoLines;
+    border-bottom: solid 1px $logoLines;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 49px;
+    margin: 4rem 2rem;
+}
+
+.form {
+    @include flex(center, center, column, initial);
+
+    &__signin {
+        @include flex(center, center, column, 10px);
+    }
+    &__last {
+        place-self: center;
+        margin: 1rem 0 3rem 0;
+    }
+}
+
+div {
+    @include flex(center, center, column, 5px);
+    place-self: end;
+
+    &:last-child {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    input.check {
+        width: 250px;
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    span {
+        font-size: 0.8rem;
+    }
+}
+
+label {
+    place-self: start;
+}
+
+.disclaimer {
+    width: 50vw;
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.img-container {
+    width: 80%;
+    margin: 4rem auto;
+
+    img {
+        width: 100px;
+    }
+}

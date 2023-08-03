@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+$logo: #518AD5;
+$logoLines: #707070;
+$background: #2F4057;
+$buttonMain: #518AD5;
+$labelColor: #D5D5D5;
+$lightTextColor: #E3E5EF;
+$backgroundSecondary: #455E80;
+$green: #7BD6A9;
+
+@mixin flex($justify, $align, $direction, $gap) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    gap: $gap;
+}
 
 *{
     margin: 0;
@@ -9,5 +25,9 @@
 }
 
 html {
-    background-color: #2F4057;
+    background-color: $background;
+}
+
+li {
+    list-style-type: none;
 }
