@@ -1,0 +1,139 @@
+body {
+    color: aliceblue;
+}
+
+.tittle {
+    &__secondary {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2rem;
+        color: #E3E5EF;
+        text-align: center;
+        margin: 4rem;
+    }
+
+    &__main {
+        font-family: 'Montserrat';
+        font-weight: 400;
+        color: #518AD5;
+        border-top: solid 1px #707070;
+        border-bottom: solid 1px #707070;
+
+    }
+}
+
+.header.mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #455E80;
+
+    li {
+        list-style-type: none;
+    }
+
+    .burguer {
+        font-size: 2rem;
+        color: #518AD5
+    }
+}
+
+.register {
+    label {
+        margin-bottom: 5px;
+    }
+
+    &__form {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0 10vw;
+
+        &-input,
+        &-select {
+            margin-bottom: 1rem;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+
+            &.check {
+                align-self: end;
+                margin-right: 5px;
+                margin-bottom: 0;
+
+                &--second {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+
+        button {
+            margin: 1rem;
+            padding: 0.5rem;
+            width: 150px;
+            align-self: end;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            background-color: #518AD5;
+            border: none;
+            color: #E3E5EF;
+            font-weight: 600;
+        }
+    }
+
+    &__footer {
+        position: absolute;
+        bottom: 5px;
+
+        &-p {
+            margin: 0.5rem;
+            padding: 0 0.5rem;
+            text-transform: uppercase;
+            font-size: 11px;
+
+            span {
+                color: #7BD6A9;
+            }
+        }
+    }
+}
+
+#resgisterPassword {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+#confirmPassword {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+.showRegister {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 60vw;
+    height: 20vh;
+    // background-color: #7BD6A9;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #E3E5EF;
+    text-align: center;
+    background-image: linear-gradient(120deg, #7BD6A9, #4c8669);
+
+    small {
+        font-size: 1rem;
+        margin-top: 1rem;
+        color: rgb(46, 46, 46);
+    }
+
+}
