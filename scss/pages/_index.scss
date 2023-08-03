@@ -58,6 +58,7 @@ label {
 
 .img-container {
     @include flex(center, center, row, 5px);
+    margin-bottom: 5vh;
 
     img {
         width: 100px;

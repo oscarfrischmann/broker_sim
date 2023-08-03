@@ -86,6 +86,7 @@ label {
   align-items: center;
   flex-direction: row;
   gap: 5px;
+  margin-bottom: 5vh;
 }
 .img-container img {
   width: 100px;
