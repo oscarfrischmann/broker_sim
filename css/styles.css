@@ -74,15 +74,18 @@ label {
 .disclaimer {
   width: 50vw;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 5rem auto;
   font-family: "Roboto", sans-serif;
   font-size: 19px;
   font-weight: 600;
 }
 
 .img-container {
-  width: 80%;
-  margin: 4rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
 }
 .img-container img {
   width: 100px;

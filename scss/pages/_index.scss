@@ -50,15 +50,14 @@ label {
 .disclaimer {
     width: 50vw;
     text-align: center;
-    margin: 0 auto;
+    margin: 0 auto 5rem auto;
     font-family: 'Roboto', sans-serif;
     font-size: 19px;
     font-weight: 600;
 }
 
 .img-container {
-    width: 80%;
-    margin: 4rem auto;
+    @include flex(center, center, row, 5px);
 
     img {
         width: 100px;
