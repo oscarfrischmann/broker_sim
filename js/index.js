@@ -104,6 +104,17 @@ stocks.push(new Stocks('TSLA', 293.34, 'USD'));
     //     clearInterval(randomPrice);
     // }, 120000);
 
+if (localStorage.getItem('user')){
+    let userJSON = localStorage.getItem('user');
+    let userPARSE = JSON.parse(userJSON);
+    user.push(userPARSE);
+}
+console.log(user);
+let userNameInput = document.getElementById('userName');
+
+userNameInput.setAttribute('value', user[0].name);
+
+
 
 function logIn() {
     do {
