@@ -150,15 +150,7 @@ function showSuccessAlertAndRedirect() {
     })
 }
 
-function makeDeposit() {
-    do {
-        settledCash = parseFloat(prompt(`Ingresar dinero: `));
-        if (isNaN(settledCash)) {
-            alert('Por favor ingresar cantidad a depositar. ');
-        }
-    } while (isNaN(settledCash));
-    alert(`Saldo actual: ${settledCash} USD.`);
-}
+
 
 function increaseDeposit() {
     let conf = confirm(`¿Quiere agregar más dinero a su cuenta?\n(Recomendado para iniciar: 10000 USD\nSaldo actual: ${settledCash} USD`);

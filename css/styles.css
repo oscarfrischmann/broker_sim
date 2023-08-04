@@ -278,8 +278,61 @@ body {
   gap: initial;
 }
 .main__circle i {
-  font-size: 4.5rem;
+  font-size: 5rem;
   color: #C4C4C4;
+}
+
+.deposit {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  flex-direction: column;
+  gap: initial;
+}
+
+.deposit__card {
+  background-color: rgba(81, 138, 213, 0.1333333333);
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #2b4881;
+  width: 80%;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.deposit__button {
+  align-self: center;
+}
+.deposit__input {
+  margin: none;
+  width: 80%;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+.deposit__user-data {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 15px;
+  width: 80%;
+  margin: 3em auto 0 auto;
+}
+.deposit__user-data span {
+  font-size: 1.5rem;
+}
+.deposit__user-name {
+  font-weight: 100;
+  font-family: "Helvetica", sans-serif;
+  font-size: 1rem;
+}
+
+.display-none {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
