@@ -22,7 +22,7 @@
     }
 }
 
-div {
+div.index {
     @include flex(center, center, column, 5px);
     place-self: end;
 
@@ -76,4 +76,9 @@ button {
     border: none;
     color: #E3E5EF;
     font-weight: 600;
+}
+@media (max-width: 387px) {
+    .tittle {
+        font-size: 40px;
+    }
 }

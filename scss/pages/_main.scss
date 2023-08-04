@@ -1,0 +1,33 @@
+.main {
+    margin-bottom: 70px;
+
+    &__container {
+        @include flex(center, center, row, 20px);
+        flex-wrap: wrap;
+        margin-top: 150px;
+
+        p {
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+    }
+
+
+    &__circle {
+        border: 5px solid $logoLines;
+        width: 165px;
+        height: 165px;
+        border-radius: 50%;
+        @include flex (center, center, row, initial);
+
+        i {
+            font-size: 4.5rem;
+            color: $iconMain;
+        }
+    }
+
+
+}

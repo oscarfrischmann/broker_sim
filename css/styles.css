@@ -59,7 +59,7 @@ input {
   margin: 1rem 0 3rem 0;
 }
 
-div {
+div.index {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,17 +67,17 @@ div {
   gap: 5px;
   place-self: end;
 }
-div:last-child {
+div.index:last-child {
   flex-direction: row;
   justify-content: center;
 }
-div input.check {
+div.index input.check {
   width: 300px;
   height: 30px;
   border-radius: 10px;
   border: none;
 }
-div span {
+div.index span {
   font-size: 0.8rem;
 }
 
@@ -120,6 +120,11 @@ button {
   font-weight: 600;
 }
 
+@media (max-width: 387px) {
+  .tittle {
+    font-size: 40px;
+  }
+}
 body {
   color: #E3E5EF;
 }
@@ -177,8 +182,7 @@ body {
   margin-bottom: 1rem;
 }
 .register__form button {
-  margin: 1rem;
-  margin-bottom: 19vh;
+  margin: 1rem 1rem 1rem 1rem;
   padding: 0.5rem;
   width: 150px;
   align-self: end;
@@ -188,6 +192,14 @@ body {
   border: none;
   color: #E3E5EF;
   font-weight: 600;
+}
+.register__footer {
+  position: relative;
+  height: 230px;
+}
+.register__footer-div {
+  position: absolute;
+  bottom: 0px;
 }
 .register__footer-p {
   margin: 0.5rem;
@@ -233,6 +245,41 @@ body {
   font-size: 1rem;
   margin-top: 1rem;
   color: rgb(46, 46, 46);
+}
+
+.main {
+  margin-bottom: 70px;
+}
+.main__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 150px;
+}
+.main__container p {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.main__circle {
+  border: 5px solid #707070;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: initial;
+}
+.main__circle i {
+  font-size: 4.5rem;
+  color: #C4C4C4;
 }
 
 /*# sourceMappingURL=styles.css.map */

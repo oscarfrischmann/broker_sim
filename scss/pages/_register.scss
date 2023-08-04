@@ -63,8 +63,8 @@ body {
 
 
         button {
-            margin: 1rem;
-            margin-top: 30vh;
+            margin: 1rem 1rem 1rem 1rem;
+
             padding: 0.5rem;
             width: 150px;
             align-self: end;
@@ -78,8 +78,13 @@ body {
     }
 
     &__footer {
-        // position: absolute;
-        // bottom: -70px;
+        position: relative;
+        height: 230px;
+
+        &-div {
+            position: absolute;
+            bottom: 0px;
+        }
 
         &-p {
             margin: 0.5rem;
