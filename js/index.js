@@ -88,23 +88,23 @@ stocks.push(new Stocks('MELI', 1208.66, 'USD'));
 stocks.push(new Stocks('TSLA', 293.34, 'USD'));
 
 
-    // console.log(`Usuario: ${user[0]}\nContraseña: ${user[1]}`);
-    // logIn(); in progress**************
-    // seeStockPrices();
-    // makeDeposit();
-    // console.log(`Saldo inicial: ${settledCash} USD`);
-    // increaseDeposit();
-    // console.log(`Saldo actual: ${settledCash} USD`);
-    // makeWithdrawal();
-    // console.log(`Sado actual: ${settledCash} USD`);
-    // const randomPrice = setInterval(changePrices, 15000);
-    // buyStock();
+// console.log(`Usuario: ${user[0]}\nContraseña: ${user[1]}`);
+// logIn(); in progress**************
+// seeStockPrices();
+// makeDeposit();
+// console.log(`Saldo inicial: ${settledCash} USD`);
+// increaseDeposit();
+// console.log(`Saldo actual: ${settledCash} USD`);
+// makeWithdrawal();
+// console.log(`Sado actual: ${settledCash} USD`);
+// const randomPrice = setInterval(changePrices, 15000);
+// buyStock();
 
-    // setTimeout(() => {
-    //     clearInterval(randomPrice);
-    // }, 120000);
+// setTimeout(() => {
+//     clearInterval(randomPrice);
+// }, 120000);
 
-if (localStorage.getItem('user')){
+if (localStorage.getItem('user')) {
     let userJSON = localStorage.getItem('user');
     let userPARSE = JSON.parse(userJSON);
     user.push(userPARSE);
@@ -114,7 +114,20 @@ let userNameInput = document.getElementById('userName');
 
 userNameInput.setAttribute('value', user[0].name);
 
+const signInForm = document.getElementById('signInForm');
+signInForm.addEventListener('submit', signUserIn);
 
+function signUserIn(e) {
+    e.preventDefault();
+
+    let signInUser = document.getElementById('userName').value;
+    let signInPassword = document.getElementById('password').value;
+    if (user[0].password === signInPassword && user[0].name === signInUser) {
+        console.log('LOGEADO')
+    }else {
+        console.log('contraSEÑA O USUARIO erroneEO');
+    }
+}
 
 function logIn() {
     do {
