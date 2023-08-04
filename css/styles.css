@@ -188,10 +188,6 @@ body {
   color: #E3E5EF;
   font-weight: 600;
 }
-.register__footer {
-  position: absolute;
-  bottom: 5px;
-}
 .register__footer-p {
   margin: 0.5rem;
   padding: 0 0.5rem;
