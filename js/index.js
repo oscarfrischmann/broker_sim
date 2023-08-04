@@ -123,10 +123,26 @@ function signUserIn(e) {
     let signInUser = document.getElementById('userName').value;
     let signInPassword = document.getElementById('password').value;
     if (user[0].password === signInPassword && user[0].name === signInUser) {
-        console.log('LOGEADO')
-    }else {
-        console.log('contraSEÑA O USUARIO erroneEO');
+        const btnSignIgn = document.getElementById('signIn');
+        btnSignIgn.style.backgroundColor = '#7BD6A9';
+        setTimeout(() => {
+            showSuccessAlertAndRedirect();
+        }, 2000)
+
+    } else {
+        const btnSignIgn = document.getElementById('signIn');
+        btnSignIgn.style.backgroundColor = 'red';
+        setTimeout(()=>{
+            btnSignIgn.style.backgroundColor = '#518AD5';
+        }, 2000)
+
     }
+}
+
+function showSuccessAlertAndRedirect() {
+    setTimeout(() => {
+        window.location.href = './pages/main.html'
+    })
 }
 
 function logIn() {
