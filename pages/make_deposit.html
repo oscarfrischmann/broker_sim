@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Make a Deposit | BRO.S</title>
+</head>
+
+<body class="deposit">
+    <header class="header mobile">
+        <h1 class="tittle__main mobile">BRO.S</h1>
+        <i class="burguer mobile fas fa-regular fa-bars">
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </i>
+    </header>
+    <main>
+        <section class="deposit__form">
+            <h2 class="tittle__secondary">Make a Deposit</h2>
+            <div class="deposit__card" id="hideCard">
+                <p>I will transfer the following amount:</p>
+                <label for="userCashInput"></label>
+                <input type="text" name="userCash" id="userCashInput" placeholder="USD" class="deposit__input">
+                <button class="deposit__button" id="depositButton">deposit</button>
+            </div>
+            <div id="confirmCard" class="display-none"></div>
+        </section>
+        <section class="deposit__user-data" id="userData">
+            <h3 class="deposit__user-name" id="userName"></h3>
+            <p class="deposit__user-cash">USD Cash: <span id="userCash"></span></p>
+        </section>
+
+    </main>
+    <footer class="deposit__footer">
+        <div class="register__footer-div">
+            <hr>
+            <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
+                Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
+                deal with real money.</p>
+        </div>
+    </footer>
+
+    <script src="../js/make_deposit.js"></script>
+</body>
+
+</html>
