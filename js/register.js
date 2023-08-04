@@ -2,6 +2,8 @@
 const registerForm = document.getElementById('registerForm');
 registerForm.addEventListener('submit', registerUser);
 
+
+
 function registerUser(e) {
     e.preventDefault();
     const userEmailInput = registerForm['userEmail'].value;
@@ -16,11 +18,24 @@ function registerUser(e) {
         password: userPasswordInput,
         country: userCountryInput,
     }
-    const userJSON = JSON.stringify(user);
-    localStorage.setItem('user', userJSON);
-    setTimeout(() => {
-        showSuccessAlertAndRedirect();
-    }, 1000);
+    do {
+        if (userNameInput && userPasswordInput) {
+            const userJSON = JSON.stringify(user);
+            localStorage.setItem('user', userJSON);
+            setTimeout(() => {
+                showSuccessAlertAndRedirect();
+            }, 1000);
+        } else {
+            const registerButton = document.getElementById('registerButton');
+            registerButton.style.backgroundColor = 'red';
+            setTimeout(() => {
+                const registerButton = document.getElementById('registerButton');
+                registerButton.style.backgroundColor = '#518AD5';
+            }, 2000);
+            break;
+        }
+    } while (!userNameInput && !userPasswordInput)
+
 }
 
 function showSuccessAlertAndRedirect() {

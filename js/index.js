@@ -110,7 +110,7 @@ if (localStorage.getItem('user')) {
     user.push(userPARSE);
     let userNameInput = document.getElementById('userName');
     userNameInput.setAttribute('value', user[0].name);
-}
+} 
 
 const signInForm = document.getElementById('signInForm');
 signInForm.addEventListener('submit', signUserIn);
@@ -119,6 +119,15 @@ function signUserIn(e) {
     e.preventDefault();
     let signInUser = document.getElementById('userName').value;
     let signInPassword = document.getElementById('password').value;
+
+if(user.length === 0){
+    const btnSignIgn = document.getElementById('signIn');
+    btnSignIgn.style.backgroundColor = 'red';
+    setTimeout(() => {
+        btnSignIgn.style.backgroundColor = '#518AD5';
+    }, 2000)
+}
+
 
     if (user[0].password === signInPassword && user[0].name === signInUser) {
         const btnSignIgn = document.getElementById('signIn');
