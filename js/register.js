@@ -21,6 +21,8 @@ function registerUser(e) {
     do {
         if (userNameInput && userPasswordInput) {
             const userJSON = JSON.stringify(user);
+            const userNameJSON = JSON.stringify(user.name);
+            localStorage.setItem('userName', userNameJSON)
             localStorage.setItem('user', userJSON);
             setTimeout(() => {
                 showSuccessAlertAndRedirect();
@@ -46,7 +48,7 @@ function showSuccessAlertAndRedirect() {
     modal.className = 'showRegister'
     const userJSON = localStorage.getItem('user');
     const user = JSON.parse(userJSON);
-    modal.innerHTML = `<p class="flex">Welcome ${user.name.toUpperCase()}!</p>
+    modal.innerHTML = `<p class="flex" style="text-transform: capitalize">Welcome ${user.name.toUpperCase()}!</p>
                         <br>
                         <small>Your account has been created</small>`;
 

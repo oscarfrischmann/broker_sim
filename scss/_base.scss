@@ -10,6 +10,7 @@ $lightTextColor: #E3E5EF;
 $iconMain: #C4C4C4;
 $backgroundSecondary: #455E80;
 $green: #7BD6A9;
+$blueShadow: #172033;
 
 @mixin flex($justify, $align, $direction, $gap) {
     display: flex;
@@ -42,6 +43,11 @@ a:visited {
     color: $buttonMain;
     text-decoration-color: $labelColor;
 }
+
 input {
     padding-left: 5px;
+}
+
+button {
+    cursor: pointer;
 }

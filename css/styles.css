@@ -28,6 +28,10 @@ input {
   padding-left: 5px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .tittle {
   text-align: center;
   color: #518AD5;
@@ -291,9 +295,10 @@ body {
 }
 
 .deposit__card {
-  background-color: rgba(81, 138, 213, 0.1333333333);
+  background-color: rgba(81, 138, 213, 0.3137254902);
   border-radius: 10px;
-  box-shadow: 3px 3px 5px #2b4881;
+  border: solid 1px #707070;
+  box-shadow: 3px 3px 5px #172033;
   width: 80%;
   height: 200px;
   margin: 0 auto;
@@ -302,6 +307,10 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 10px;
+}
+.deposit button {
+  width: 30%;
+  margin: 1em 0;
 }
 .deposit__button {
   align-self: center;
@@ -317,13 +326,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: start;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
-  width: 80%;
-  margin: 3em auto 0 auto;
-}
-.deposit__user-data span {
-  font-size: 1.5rem;
 }
 .deposit__user-name {
   font-weight: 100;
@@ -333,6 +337,11 @@ body {
 
 .display-none {
   display: none;
+}
+
+#confirmCard span {
+  font-size: 2rem;
+  color: #7BD6A9;
 }
 
 /*# sourceMappingURL=styles.css.map */

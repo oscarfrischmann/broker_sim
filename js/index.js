@@ -110,6 +110,7 @@ if (localStorage.getItem('user')) {
     user.push(userPARSE);
     let userNameInput = document.getElementById('userName');
     userNameInput.setAttribute('value', user[0].name);
+
 } 
 
 const signInForm = document.getElementById('signInForm');
@@ -125,7 +126,7 @@ if(user.length === 0){
     btnSignIgn.style.backgroundColor = 'red';
     setTimeout(() => {
         btnSignIgn.style.backgroundColor = '#518AD5';
-    }, 2000)
+    }, 1000)
 }
 
 
@@ -140,7 +141,7 @@ if(user.length === 0){
         btnSignIgn.style.backgroundColor = 'red';
         setTimeout(() => {
             btnSignIgn.style.backgroundColor = '#518AD5';
-        }, 2000)
+        }, 1000)
     }
 }
 
