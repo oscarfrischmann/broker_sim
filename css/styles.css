@@ -344,4 +344,61 @@ body {
   color: #7BD6A9;
 }
 
+.tittle__secondary {
+  text-transform: capitalize;
+}
+
+.trade {
+  display: flex;
+  flex-direction: column;
+}
+.trade .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.trade .info button {
+  margin: 1em 0;
+}
+.trade .info__btn--remove {
+  border-radius: 10px 0 0 10px;
+}
+.trade .info__btn--add {
+  border-radius: 0 10px 10px 0;
+}
+.trade .info input {
+  padding: 0;
+  padding: 0.5rem;
+  width: 130px;
+  font-size: 0.9rem;
+  border: none;
+}
+.trade .info label {
+  place-self: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.trade .info__select {
+  width: 130px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.buttons {
+  width: 50%;
+  display: block;
+  margin: 20px auto 2rem auto;
+}
+.buttons .sell {
+  background-color: red;
+  margin: 0 5px;
+}
+.buttons .buy {
+  background-color: green;
+  margin: 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

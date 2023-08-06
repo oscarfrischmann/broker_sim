@@ -57,7 +57,6 @@ addCashConfirm.addEventListener('click', () => {
         startTrading.classList.toggle('display-none');
         addCash.classList.toggle('display-none')
         
-        
         const userCash = localStorage.getItem('cash');
         const settledCash = Number(userCash) + Number(addedCash);
         console.log(settledCash);
@@ -67,8 +66,15 @@ addCashConfirm.addEventListener('click', () => {
         showCash.innerText = `${settledCash} USD`
         showConfirmCard.appendChild(showCash);
     }
+});
 
-
+startTrading.addEventListener('click', ()=>{
+    startTrading.style.backgroundColor = '#7BD6A9';
+    setTimeout(() => {
+        window.location.href = '../pages/trading.html';
+    }, 1000);
 })
+
+
 
 

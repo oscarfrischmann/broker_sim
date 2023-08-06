@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Trading | BRO.S</title>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css"> -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body class="trade">
+    <header class="header mobile">
+        <h1 class="tittle__main mobile">BRO.S</h1>
+        <i class="burguer mobile fas fa-regular fa-bars">
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </i>
+    </header>
+    <main>
+        <!-- <div class="stocks">
+
+            <figure class="highcharts-figure" style="width: 80vw; margin: 20px auto">
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    Basic line chart showing trends in a dataset. This chart includes the
+                    <code>series-label</code> module, which adds a label to each line for
+                    enhanced readability.
+                </p>
+            </figure>
+
+        </div> -->
+
+        <h2 class="tittle__secondary tarde">trading area</h2>
+
+        <section class="info">
+            <h3>Aviable Cash: <span class="userCash" id="userCash">10000 USD</span></h3>
+            <select name="stocks" id="stocksSelect" class="info__select">
+                <option>Select Stock</option>
+            </select>
+            <div class="info__selec">
+                <button id="remove" class="info__btn--remove">remove</button>
+                <input type="number" name="sotcksQuantity" id="quantity" class="info__input" placeholder="0"></input>
+                <button id="remove" class="info__btn--add">add</button>
+            </div>
+        </section>
+
+
+        <section class="card" id="tradeCard">
+            <div class="card__container deposit__card">
+                <h4 id="orderType" class="card__tittle">Buy Order</h4>
+                <span id="stokTicker" class="card__stock">KO | 67.35</span>
+                <span id="showQuantity" class="card__quantity">Quantity: 10 (~6735) USD</span>
+            </div>
+        </section>
+
+        <secttion class="buttons">
+            <button id="sellBtn" class="sell">sell</button>
+            <button id="buyBtn" class="buy">buy</button>
+        </secttion>
+
+    </main>
+    <footer class="register__footer">
+        <div class="register__footer-div">
+            <hr>
+            <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
+                Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
+                deal with real money.</p>
+        </div>
+    </footer>
+
+    <script src="../js/trading.js"></script>
+</body>
+
+</html>

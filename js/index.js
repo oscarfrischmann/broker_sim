@@ -60,7 +60,7 @@ Funcionalidad:
 
 const user = [];
 const stocks = [];
-let userX, password, settledCash;
+let password, settledCash;
 const userPortfolio = [];
 class Stocks {
     constructor(ticker, price, currency, quantity) {
@@ -149,21 +149,6 @@ function showSuccessAlertAndRedirect() {
     setTimeout(() => {
         window.location.href = './pages/main.html'
     })
-}
-
-
-
-function increaseDeposit() {
-    let conf = confirm(`¿Quiere agregar más dinero a su cuenta?\n(Recomendado para iniciar: 10000 USD\nSaldo actual: ${settledCash} USD`);
-    if (conf === true) {
-        let increaseDeposit = parseFloat(prompt(`¿Cuánto quiere ingresar a su cuenta?\nSaldo actual: ${settledCash} USD\nSi no, ingresar "0"`));
-        if (isNaN(increaseDeposit)) {
-            do {
-                increaseDeposit = parseFloat(prompt(`Ingrese un valor o 0 para continuar: `));
-            } while (isNaN(increaseDeposit));
-        }
-        return settledCash += increaseDeposit;
-    }
 }
 
 function makeWithdrawal() {

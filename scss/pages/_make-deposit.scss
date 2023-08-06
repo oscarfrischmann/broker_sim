@@ -11,7 +11,7 @@
         width: 80%;
         height: 200px;
         margin: 0 auto;
-        @include flex(center, center, column, 10px)
+        @include flex(center, center, column, 10px);
     }
     button {
         width: 30%;
