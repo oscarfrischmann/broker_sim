@@ -72,7 +72,6 @@ class Stocks {
     newPrice() {
         this.price = stocks.forEach((e) => e.price);
     }
-
 }
 
 //Esperando integrar con una API que provea datos en tiempo real!!!!!
@@ -87,22 +86,8 @@ stocks.push(new Stocks('META', 312.05, 'USD'));
 stocks.push(new Stocks('MELI', 1208.66, 'USD'));
 stocks.push(new Stocks('TSLA', 293.34, 'USD'));
 
-
-// console.log(`Usuario: ${user[0]}\nContraseña: ${user[1]}`);
-// logIn(); in progress**************
-// seeStockPrices();
-// makeDeposit();
-// console.log(`Saldo inicial: ${settledCash} USD`);
-// increaseDeposit();
-// console.log(`Saldo actual: ${settledCash} USD`);
-// makeWithdrawal();
-// console.log(`Sado actual: ${settledCash} USD`);
-// const randomPrice = setInterval(changePrices, 15000);
-// buyStock();
-
-// setTimeout(() => {
-//     clearInterval(randomPrice);
-// }, 120000);
+let stocksJSON = JSON.stringify(stocks);
+localStorage.setItem('stocks', stocksJSON);
 
 if (localStorage.getItem('user')) {
     let userJSON = localStorage.getItem('user');
@@ -170,10 +155,7 @@ function makeWithdrawal() {
     }
 }
 
-function seeStockPrices() {
-    console.log(`Acciones disponibles:`);
-    stocks.forEach(element => console.log(`${element.ticker}: ${element.price} ${element.currency}`));
-}
+
 
 function buyStock() {
     let finded;

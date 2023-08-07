@@ -9,17 +9,30 @@
     .info {
         @include flex(center, center, column, 10px);
 
+        h3 {
+            border: 1px solid $logoLines;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
         button {
             margin: 1em 0;
         }
 
+        &__order {
+            @include flex (center, center, row, 5px);
+        }
+
         &__btn {
+
             &--remove {
+                background-color: $backgroundSecondary;
                 border-radius: 10px 0 0 10px;
             }
 
             &--add {
                 border-radius: 0 10px 10px 0;
+                background-color: $backgroundSecondary;
             }
         }
 
@@ -39,9 +52,9 @@
 
 
         &__select {
-            width: 130px;
+            @include flex(center, center, row, 0px);
+            // width: 130px;
             height: 30px;
-            margin-top: 10px;
             padding: 5px;
         }
     }
@@ -49,21 +62,27 @@
 }
 
 .buttons {
-    width: 50%;
-    display: block;
-    margin: 20px auto 2rem auto;
 
     .sell {
         background-color: red;
-        margin: 0 5px;
+        border-radius: 0;
+        height: 30px;
+        // margin: 0 5px;
     }
 
     .buy {
         background-color: green;
-        margin: 0;
+        border-radius: 0;
+        height: 30px;
+        // margin: 0 5px;
     }
 }
 
+.confirm {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+}
 
 
 

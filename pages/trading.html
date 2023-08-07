@@ -51,30 +51,34 @@
         <h2 class="tittle__secondary tarde">trading area</h2>
 
         <section class="info">
-            <h3>Aviable Cash: <span class="userCash" id="userCash">10000 USD</span></h3>
-            <select name="stocks" id="stocksSelect" class="info__select">
-                <option>Select Stock</option>
-            </select>
-            <div class="info__selec">
+            <h3>Aviable Cash: <span class="userCash" id="userCash"></span></h3>
+            <div class="info__order">
+                <select name="stocks" id="stocksSelect" class="info__select">
+                    <option>Select Stock</option>
+                </select>
+
+                <div class="buttons">
+                    <button id="sellBtn" class="sell">sell</button>
+                    <button id="buyBtn" class="buy">buy</button>
+                </div>
+            </div>
+            <div class="info__selec" style="font-size: 0">
                 <button id="remove" class="info__btn--remove">remove</button>
-                <input type="number" name="sotcksQuantity" id="quantity" class="info__input" placeholder="0"></input>
-                <button id="remove" class="info__btn--add">add</button>
+                <input type="number" name="sotcksQuantity" id="quantity" class="info__input"
+                    placeholder="0 (quantity)"></input>
+                <button id="add" class="info__btn--add">add</button>
             </div>
         </section>
 
 
         <section class="card" id="tradeCard">
             <div class="card__container deposit__card">
-                <h4 id="orderType" class="card__tittle">Buy Order</h4>
-                <span id="stokTicker" class="card__stock">KO | 67.35</span>
-                <span id="showQuantity" class="card__quantity">Quantity: 10 (~6735) USD</span>
+                <h4 id="orderType" class="card__tittle"></h4>
+                <span id="stokTicker" class="card__stock"></span>
+                <span id="showQuantity" class="card__quantity"></span>
             </div>
         </section>
-
-        <secttion class="buttons">
-            <button id="sellBtn" class="sell">sell</button>
-            <button id="buyBtn" class="buy">buy</button>
-        </secttion>
+        <button class="confirm" id="confirmOrder">CONFIRM</button>
 
     </main>
     <footer class="register__footer">

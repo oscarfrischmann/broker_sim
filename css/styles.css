@@ -359,14 +359,28 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+.trade .info h3 {
+  border: 1px solid #707070;
+  padding: 5px;
+  border-radius: 5px;
+}
 .trade .info button {
   margin: 1em 0;
 }
+.trade .info__order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
 .trade .info__btn--remove {
+  background-color: #455E80;
   border-radius: 10px 0 0 10px;
 }
 .trade .info__btn--add {
   border-radius: 0 10px 10px 0;
+  background-color: #455E80;
 }
 .trade .info input {
   padding: 0;
@@ -381,24 +395,30 @@ body {
   margin-bottom: 0;
 }
 .trade .info__select {
-  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0px;
   height: 30px;
-  margin-top: 10px;
   padding: 5px;
 }
 
-.buttons {
-  width: 50%;
-  display: block;
-  margin: 20px auto 2rem auto;
-}
 .buttons .sell {
   background-color: red;
-  margin: 0 5px;
+  border-radius: 0;
+  height: 30px;
 }
 .buttons .buy {
   background-color: green;
-  margin: 0;
+  border-radius: 0;
+  height: 30px;
+}
+
+.confirm {
+  display: block;
+  width: 150px;
+  margin: 20px auto;
 }
 
 /*# sourceMappingURL=styles.css.map */
