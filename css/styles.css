@@ -421,4 +421,10 @@ body {
   margin: 20px auto;
 }
 
+.before-confirm {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0 0;
+}
+
 /*# sourceMappingURL=styles.css.map */
