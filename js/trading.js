@@ -118,7 +118,10 @@ add.addEventListener("click", () => {
 	if (fullQuantity * resultado[0].price > userCash) {
 		showQuantity.innerText = "Not enought money in your account";
 		setTimeout(() => {
-			showQuantity.innerText = "";
+            fullQuantity -= numberQuantity;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
+                stockSelect.value
+            } (~${(fullQuantity * resultado[0].price).toFixed(2)} USD)`;
 		}, 3000);
 	} else {
 		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
@@ -134,7 +137,10 @@ remove.addEventListener("click", () => {
     if(fullQuantity <= 0){
         showQuantity.innerText = 'Quantity can not be less than 0';
         setTimeout(() => {
-			showQuantity.innerText = "";
+			fullQuantity += numberQuantity;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
+				stockSelect.value
+			} (~${(fullQuantity * resultado[0].price).toFixed(2)} USD)`
 		}, 3000);
     }else {
         showQuantity.innerText = `Quantity: ${fullQuantity} of ${

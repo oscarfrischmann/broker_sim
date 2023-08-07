@@ -57,6 +57,26 @@ function showSuccessAlertAndRedirect() {
     }, 3000);
 }
 
+let showPasswordBtn = document.getElementById('showPassword');
+showPasswordBtn.addEventListener('click', ()=>{
+    console.log(showPasswordBtn.value);
+
+    if(showPasswordBtn.value === 'on'){
+        console.log('show password')
+        let userPasswordInputType = document.getElementById('registerPassword');
+        console.log(userPasswordInputType);
+    
+        userPasswordInputType.removeAttribute('type'); 
+        userPasswordInputType.setAttribute('type', 'text'); 
+    }
+    
+})
+
+
+
+
+
+
 
 
 
