@@ -44,6 +44,7 @@ depositButton.addEventListener("click", () => {
 			showSettledCash.innerText = `${userCash} USD`;
 			showCash.innerText = `${firstDeposit} USD`;
 			showConfirmCard.appendChild(showCash);
+			showConfirmCard.insertAdjacentHTML('afterbegin', `<p> Total Cash: ${userCash} USD</p>`);
 		}
 	}
 });
@@ -76,12 +77,10 @@ addCashConfirm.addEventListener("click", () => {
 		console.log(settledCash);
 		console.log(addedCash);
 		localStorage.setItem("cash", settledCash);
-
-		// let showCash = document.createElement('span');
-
 		showSettledCash.innerText = `${settledCash} USD`;
-		showCash.innerText = `${settledCash} USD`;
+		showCash.innerText = `${addedCash} USD`;
 		showConfirmCard.appendChild(showCash);
+
 	}
 });
 

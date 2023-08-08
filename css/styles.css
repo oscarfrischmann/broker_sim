@@ -129,6 +129,28 @@ button {
     font-size: 40px;
   }
 }
+.burguer {
+  cursor: pointer;
+}
+.burguer__nav {
+  position: absolute;
+  right: 15px;
+  top: 58px;
+  background-color: #455E80;
+}
+.burguer__ul {
+  padding: 10px;
+}
+.burguer__item {
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.burguer__item a {
+  text-decoration: none;
+  color: #C4C4C4;
+}
+
 body {
   color: #E3E5EF;
 }

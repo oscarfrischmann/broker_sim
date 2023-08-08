@@ -11,23 +11,24 @@
     <title>Create account | BRO.S</title>
 </head>
 
-<body>
+<body id="body">
     <header class="header mobile">
         <h1 class="tittle__main mobile">BRO.S</h1>
-        <i class="burguer mobile fas fa-regular fa-bars">
-            <nav>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
-        </i>
+        <i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
+        <nav class="burguer__nav display-none" id="navMenu">
+            <ul class="burguer__ul">
+                <li class="burguer__item" id="depositLink"><a href="./make_deposit.html">make deposit</a></li>
+                <hr>
+                <li class="burguer__item" id="tradingLink"><a href="./trading.html">start trading</a></li>
+                <hr>
+                <li class="burguer__item" id=""><a href="">portfolio</a></li>
+                <hr>
+                <li class="burguer__item" id=""><a href="">withdrawal</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
+    <main id="main">
         <h2 class="tittle__secondary">Create Account</h2>
         <section class="register" id="sectionRegister">
             <form action="" class="register__form mobile" id="registerForm">
@@ -318,6 +319,7 @@
                 deal with real money.</p>
         </div>
     </footer>
+    <script src="../js/components/burguer-menu.js"></script>
     <script src="../js/register.js"></script>
 </body>
 

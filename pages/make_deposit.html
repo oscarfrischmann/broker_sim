@@ -14,19 +14,20 @@
 <body class="deposit">
     <header class="header mobile">
         <h1 class="tittle__main mobile">BRO.S</h1>
-        <i class="burguer mobile fas fa-regular fa-bars">
-            <nav>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
-        </i>
+        <i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
+        <nav class="burguer__nav display-none" id="navMenu">
+            <ul class="burguer__ul">
+                <li class="burguer__item" id="depositLink"><a href="./make_deposit.html">make deposit</a></li>
+                <hr>
+                <li class="burguer__item" id="tradingLink"><a href="./trading.html">start trading</a></li>
+                <hr>
+                <li class="burguer__item" id=""><a href="">portfolio</a></li>
+                <hr>
+                <li class="burguer__item" id=""><a href="">withdrawal</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
+    <main id="main">
         <section class="deposit__form">
             <h2 class="tittle__secondary">Make a Deposit</h2>
             <div class="deposit__card" id="hideCard">
@@ -67,7 +68,7 @@
                 deal with real money.</p>
         </div>
     </footer>
-
+<script src="../js/components/burguer-menu.js"></script>
     <script src="../js/make_deposit.js"></script>
 </body>
 
