@@ -136,6 +136,16 @@ function showSuccessAlertAndRedirect() {
     })
 }
 
+let showPasswordBtn = document.getElementById("showPassword");
+showPasswordBtn.addEventListener("click", () => {
+	let passwordInputType = document.getElementById("password");
+	if (showPasswordBtn.checked) {
+	passwordInputType.setAttribute("type", "text");
+	} else {
+		passwordInputType.setAttribute("type", "password");
+	}
+});
+
 function makeWithdrawal() {
     let conf = confirm(`¿Quiere retirar dinero de su cuenta?\nSaldo actual: ${settledCash} USD`);
     if (conf === true) {
