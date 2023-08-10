@@ -131,6 +131,7 @@ button {
 }
 .header {
   position: relative;
+  z-index: 5;
 }
 
 .burguer {
@@ -288,6 +289,7 @@ body {
 }
 
 .main {
+  position: relative;
   margin-bottom: 70px;
 }
 .main__container {
