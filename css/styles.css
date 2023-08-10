@@ -129,6 +129,10 @@ button {
     font-size: 40px;
   }
 }
+.header {
+  position: relative;
+}
+
 .burguer {
   cursor: pointer;
 }
@@ -137,6 +141,8 @@ button {
   right: 15px;
   top: 58px;
   background-color: #455E80;
+  animation: 1s ease-out burguer;
+  overflow-x: hidden;
 }
 .burguer__ul {
   padding: 10px;
@@ -151,6 +157,14 @@ button {
   color: #C4C4C4;
 }
 
+@keyframes burguer {
+  0% {
+    transform: translatex(165px);
+  }
+  100% {
+    transform: translatex(0px);
+  }
+}
 body {
   color: #E3E5EF;
 }
@@ -284,6 +298,7 @@ body {
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 150px;
+  position: relative;
 }
 .main__container p {
   text-align: center;

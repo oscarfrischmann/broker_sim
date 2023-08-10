@@ -1,25 +1,44 @@
+.header {
+    position: relative;
+}
+
+
 .burguer {
-        cursor: pointer;
+    cursor: pointer;
 
-        &__nav {
-            position: absolute;
-            right: 15px;
-            top: 58px;
-            background-color: $backgroundSecondary;
-            // min-height: 100px;
-        }
-        &__ul {
-            padding: 10px;
-        }
-        &__item {
-            padding: 10px;
-            text-transform: uppercase;
-            cursor: pointer;
-
-            a{
-                text-decoration: none;
-                color: $iconMain;
-            }
-        }
+    &__nav {
+        position: absolute;
+        right: 15px;
+        top: 58px;
+        background-color: $backgroundSecondary;
+        animation: 1s ease-out burguer;
+        overflow-x: hidden;
     }
 
+
+    &__ul {
+        padding: 10px;
+
+    }
+
+    &__item {
+        padding: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        a {
+            text-decoration: none;
+            color: $iconMain;
+        }
+    }
+}
+
+@keyframes burguer {
+    0% {
+        transform: translatex(165px);
+    }
+
+    100% {
+        transform: translatex(0px);
+    }
+}

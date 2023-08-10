@@ -7,6 +7,7 @@ const addCash = document.getElementById("addCash");
 const addCashConfirm = document.getElementById("addCashConfirm");
 let showCash = document.createElement("span");
 const showSettledCash = document.getElementById("settledCash");
+const userConfirmCash = document.getElementById("userConfirmCash");
 
 depositButton.addEventListener("click", () => {
 	const firstDeposit = document.getElementById("userCashInput").value;
@@ -44,21 +45,17 @@ depositButton.addEventListener("click", () => {
 			showSettledCash.innerText = `${userCash} USD`;
 			showCash.innerText = `${firstDeposit} USD`;
 			showConfirmCard.appendChild(showCash);
-			showConfirmCard.insertAdjacentHTML('afterbegin', `<p> Total Cash: ${userCash} USD</p>`);
+			userConfirmCash.innerText = `Total Cash: ${userCash} USD`;
+			// showConfirmCard.insertAdjacentHTML('afterbegin', `<p> Total Cash: ${userCash} USD</p>`);
 		}
 	}
 });
 
-const showCard = function () {
+addCashBtn.addEventListener("click", () => {
 	showConfirmCard.classList.toggle("display-none");
 	addCashBtn.classList.toggle("display-none");
 	startTrading.classList.toggle("display-none");
 	addCash.classList.toggle("display-none");
-};
-
-addCashBtn.addEventListener("click", () => {
-	showCash.remove();
-	showCard();
 });
 
 addCashConfirm.addEventListener("click", () => {
@@ -70,17 +67,20 @@ addCashConfirm.addEventListener("click", () => {
 			addCashConfirm.style.backgroundColor = "#518AD5";
 		}, 1000);
 	} else {
-		showCard();
-
 		const userCash = localStorage.getItem("cash");
 		const settledCash = Number(userCash) + Number(addedCash);
 		console.log(settledCash);
 		console.log(addedCash);
 		localStorage.setItem("cash", settledCash);
+
+		showConfirmCard.appendChild(showCash);
 		showSettledCash.innerText = `${settledCash} USD`;
 		showCash.innerText = `${addedCash} USD`;
-		showConfirmCard.appendChild(showCash);
-
+		addCash.classList.toggle("display-none");
+		userConfirmCash.innerText = `Total Cash: ${settledCash} USD`;
+		addCashBtn.classList.toggle("display-none");
+		startTrading.classList.toggle("display-none");
+		showConfirmCard.classList.toggle("display-none");
 	}
 });
 
