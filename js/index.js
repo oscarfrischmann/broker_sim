@@ -94,6 +94,7 @@ if (localStorage.getItem('user')) {
     let userPARSE = JSON.parse(userJSON);
     user.push(userPARSE);
     let userNameInput = document.getElementById('userName');
+    //usar name={...user} toLowerCase and Upper case
     userNameInput.setAttribute('value', user[0].name);
 
 } 

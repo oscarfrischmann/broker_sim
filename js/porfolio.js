@@ -1,3 +1,4 @@
+var DateTime = luxon.DateTime;
 const stocks = [];
 const userPortfolio = [];
 
@@ -60,40 +61,75 @@ function userPortfolioPriceUpdate() {
 		}
 	});
 }
+
 const randomPrice = setInterval(changePrices, 5000);
 setTimeout(() => {
 	clearInterval(randomPrice);
 }, 120000);
 
-const tableBody = document.getElementById('tableBody');
+const tableBody = document.getElementById("tableBody");
+
+userPortfolio.forEach((stock) => {
+	const tableRow = document.createElement("tr");
+
+	const tableDataTicker = document.createElement("td");
+	const tableDataQuantity = document.createElement("td");
+	const tableDataPrice = document.createElement("td");
+	const tableDataChange = document.createElement("td");
+	const tableDataValue = document.createElement("td");
+	tableBody.appendChild(tableRow);
+	tableRow.appendChild(tableDataTicker).innerHTML = `${stock.ticker}`;
+	tableRow.appendChild(tableDataQuantity).innerHTML = `${stock.quantity}`;
+	tableRow.appendChild(tableDataPrice).innerHTML = ` ${stock.price}`;
+	tableRow.appendChild(tableDataChange).innerHTML = ` ${stock.currency}`;
+	tableRow.appendChild(tableDataValue).innerHTML = ` ${(
+		stock.price * stock.quantity
+	).toFixed(2)}`;
+});
+
+function refreshTable() {
+	userPortfolio.forEach((stock, index) => {
+		const row = tableBody.children[index]; // Seleccionar la row correspondiente
+		if (row) {
+			const cell = row.children; // Seleccionar las cell dentro de la row
+			cell[2].textContent = stock.price; // Actualizar la celda de precio
+			cell[4].textContent = (stock.price * stock.quantity).toFixed(2); // Actualizar la celda de valor
+		}
+	});
+}
+
+// Dentro de tu función de intervalo o cada vez que cambien los datos
+setInterval(() => {
+	// Actualizar los precios de las acciones aquí
+	refreshTable(); // Actualizar la tabla con los nuevos datos
+}, 5001);
+
+// const portfolioFullData = {
+//     aviableCash: ,
+//     networkValue:,
+//     dailyPL:,
+// }
+
+// const fullData = document.getElementById("fullData").children;
+// for (let i = 0; i < fullData.length; i++) {
+// 	fullData[1].innerHTML =
+// }
+
+const now = DateTime.now();
+if (now.weekday === (6 && 7)) {
+	console.log('Markets are OPEN, start tranding!');
+}else{
+	console.log(`Markets are CLOSED, go out and have fun!!!`);;
+}
 
 
-    userPortfolio.forEach((stock) => {
-        const tableRow = document.createElement('tr');
-    
-        const tableDataTicker = document.createElement('td');
-        const tableDataQuantity = document.createElement('td'); 
-        const tableDataPrice = document.createElement('td');
-        tableDataPrice.id = `tdPrice${userPortfolio.indexOf(stock)}`;
-        const tableDataChange = document.createElement('td');
-        const tableDataValue = document.createElement('td');
-        tableBody.appendChild(tableRow);
-        tableRow.appendChild(tableDataTicker).innerHTML= `${stock.ticker}`;
-        tableRow.appendChild(tableDataQuantity).innerHTML=`${stock.quantity}`;
-        tableRow.appendChild(tableDataPrice).innerHTML=` ${stock.price}`;
-        tableRow.appendChild(tableDataChange).innerHTML=` ${stock.currency}`;
-        tableRow.appendChild(tableDataValue).innerHTML=` ${(stock.price * stock.quantity).toFixed(2)}`;
-    });
+console.log(now);
+console.log(now.year);
+console.log(now.weekday);
+console.log(now.hour);
+console.log(now.minute);
 
-    const priceTD0 = document.getElementById('tdPrice0');
-    const priceTD1 = document.getElementById('tdPrice1');
-    const priceTD2 = document.getElementById('tdPrice2');
-    const priceTD3 = document.getElementById('tdPrice3');
-setInterval(()=>{
-    priceTD0.textContent = `${userPortfolio[0].price}`
-    priceTD1.textContent = `${userPortfolio[1].price}`
-    priceTD2.textContent = `${userPortfolio[2].price}`
-    priceTD3.textContent = `${userPortfolio[3].price}`
-}, 5001)
+console.log(now.toLocaleString());
 
-
+console.log({ ..."locale" });
+console.log([..."locale"]);

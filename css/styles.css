@@ -466,4 +466,16 @@ body {
   margin: 20px 0 0 0;
 }
 
+.table {
+  width: 80vw;
+  margin: 30px auto;
+  border: solid 1px;
+}
+.table thead {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  font-style: normal;
+}
+
 /*# sourceMappingURL=styles.css.map */
