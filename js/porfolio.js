@@ -1,4 +1,4 @@
-var DateTime = luxon.DateTime;
+
 const stocks = [];
 const userPortfolio = [];
 
@@ -114,22 +114,3 @@ setInterval(() => {
 // for (let i = 0; i < fullData.length; i++) {
 // 	fullData[1].innerHTML =
 // }
-
-const now = DateTime.now();
-if (now.weekday === (6 && 7)) {
-	console.log('Markets are OPEN, start tranding!');
-}else{
-	console.log(`Markets are CLOSED, go out and have fun!!!`);;
-}
-
-
-console.log(now);
-console.log(now.year);
-console.log(now.weekday);
-console.log(now.hour);
-console.log(now.minute);
-
-console.log(now.toLocaleString());
-
-console.log({ ..."locale" });
-console.log([..."locale"]);
