@@ -3,9 +3,7 @@
 // fetch(
 // 	"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=DESP&interval=60min&apikey=XI4WPN0UIHO5EXC8"
 // )
-// // fetch(
-// // 	"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=XI4WPN0UIHO5EXC8"
-// // )
+
 // .then((data) =>
 // 	data
 // 		.json()
@@ -131,3 +129,17 @@
 // 	}
 // }
 //todo hasta aquí FETCH
+
+(async function () {
+	try {
+		const stockData = await fetch(
+			"https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=TSLA&apikey=XI4WPN0UIHO5EXC8"
+		);
+		const parseStockData = await stockData.json();
+        const stockDataJSON = JSON.stringify(parseStockData)
+		sessionStorage.setItem('stock', stockDataJSON);
+        console.log(stockDataJSON)
+	} catch (e) {
+		console.log("Error", e);
+	}
+})();
