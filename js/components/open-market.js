@@ -1,4 +1,4 @@
-var DateTime = luxon.DateTime;
+let DateTime = luxon.DateTime;
 
 const now = DateTime.now().setZone("America/New_york");
 

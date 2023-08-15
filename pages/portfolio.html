@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
-    <title>Portfolio | BRO.S</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/styles.css" />
+		<title>Portfolio | BRO.S</title>
+	</head>
+	<body>
+		<header class="header mobile">
+			<h1 class="tittle__main mobile">BRO.S</h1>
+			<i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
+			<nav class="burguer__nav display-none" id="navMenu">
+				<ul class="burguer__ul">
+					<li class="burguer__item" id="depositLink">
+						<a href="./make_deposit.html">make deposit</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id="tradingLink">
+						<a href="./trading.html">start trading</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id="">
+						<a href="./portfolio.html">portfolio</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id=""><a href="">withdrawal</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<p class="market-status" id="marketStatus">
+				Market Status:
+				<span class="market-status__span" id="marketStatusSpan"></span>
+			</p>
 
-<div id="fullData">
-    <span></span><span></span><span></span>
-</div>
+			<div id="fullData"><span></span><span></span><span></span></div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>instrument</th>
-                <th>position</th>
-                <th>price</th>
-                <th>change</th>
-                <th>value</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
-    <script src="../js/components/get-data.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
-    <script src="../js/components/burguer-menu.js"></script>
-    <script src="../js/components/open-market.js"></script>
-    <script src="../js/porfolio.js"></script>
-</body>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>instrument</th>
+						<th>position</th>
+						<th>price</th>
+						<th>change</th>
+						<th>value</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody"></tbody>
+			</table>
+		</main>
+
+		<script src="../js/components/open-market.js"></script>
+		<script src="../js/components/get-data.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+		<script src="../js/components/burguer-menu.js"></script>
+		<script src="../js/components/open-market.js"></script>
+		<script src="../js/porfolio.js"></script>
+	</body>
 </html>
