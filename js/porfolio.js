@@ -1,4 +1,3 @@
-
 const stocks = [];
 const userPortfolio = [];
 
@@ -114,3 +113,5 @@ setInterval(() => {
 // for (let i = 0; i < fullData.length; i++) {
 // 	fullData[1].innerHTML =
 // }
+
+
