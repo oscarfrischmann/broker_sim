@@ -32,6 +32,27 @@ button {
   cursor: pointer;
 }
 
+.status {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  margin: 10px;
+}
+.status__paragraph {
+  color: #E3E5EF;
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+.status__light {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  display: block;
+}
+
 .tittle {
   text-align: center;
   color: #518AD5;

@@ -1,74 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+			integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="../css/styles.css" />
+		<title>Transfer money | BRO.S</title>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/styles.css">
-    <title>Transfer money | BRO.S</title>
-</head>
+	<body class="main__body">
+		<header class="header mobile">
+			<h1 class="tittle__main mobile">BRO.S</h1>
+			<i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
+			<nav class="burguer__nav display-none" id="navMenu">
+				<ul class="burguer__ul">
+					<li class="burguer__item" id="depositLink">
+						<a href="./make_deposit.html">make deposit</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id="tradingLink">
+						<a href="./trading.html">start trading</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id="">
+						<a href="./portfolio.html">portfolio</a>
+					</li>
+					<hr />
+					<li class="burguer__item" id=""><a href="">withdrawal</a></li>
+				</ul>
+			</nav>
+		</header>
 
-<body class="main__body">
-    <header class="header mobile">
-        <h1 class="tittle__main mobile">BRO.S</h1>
-        <i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
-        <nav class="burguer__nav display-none" id="navMenu">
-            <ul class="burguer__ul">
-                <li class="burguer__item" id="depositLink"><a href="./make_deposit.html">make deposit</a></li>
-                <hr>
-                <li class="burguer__item" id="tradingLink"><a href="./trading.html">start trading</a></li>
-                <hr>
-                <li class="burguer__item" id=""><a href="./portfolio.html">portfolio</a></li>
-                <hr>
-                <li class="burguer__item" id=""><a href="">withdrawal</a></li>
-            </ul>
-        </nav>
-    </header>
+		<main id="main" class="main">
+			<div class="status">
+				<p class="status__paragraph" id="marketStatus">
+					Market Status 
+					<span class="status__span" id="marketStatusSpan"></span>
+				</p>
+				<div class="status__light" id="status-light"></div>
+			</div>
 
-    <main id="main" class="main">
-        <p class="market-status" id="marketStatus">Market Status: <span class="market-status__span" id="marketStatusSpan"></span></p>
-        <section class="main__container">
-            <div class="main__icon-cont main__icon-cont--1">
-                <div class="main__circle--1 main__circle">
-                    <a href="./make_deposit.html">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </a>
-                </div>
-                <p class="main__paragraph--1">make a deposit</p>
-
-            </div>
-            <div class="main__icon-cont main__icon-cont--2">
-                <div class="main__circle--2 main__circle">
-                    <a href="">
-                        <i class="fa-solid fa-money-bill-transfer"></i>
-                    </a>
-                </div>
-                <p class="main__paragraph--2">make a withdrawal</p>
-            </div>
-            <div class="main__icon-cont main__icon-cont--3">
-                <div class="main__circle--3 main__circle">
-                    <a href="./trading.html">
-                        <i class="fa-solid fa-arrow-trend-up"></i>
-                    </a>
-                </div>
-                <p class="main__paragraph--3">start trading</p>
-            </div>
-        </section>
-    </main>
-    <footer class="register__footer">
-        <div class="register__footer-div">
-            <hr>
-            <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
-                Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
-                deal with real money.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
-    <script src="../js/components/burguer-menu.js"></script>
-    <script src="../js/components/open-market.js"></script>
-</body>
-
+			<section class="main__container">
+				<div class="main__icon-cont main__icon-cont--1">
+					<div class="main__circle--1 main__circle">
+						<a href="./make_deposit.html">
+							<i class="fa-solid fa-building-columns"></i>
+						</a>
+					</div>
+					<p class="main__paragraph--1">make a deposit</p>
+				</div>
+				<div class="main__icon-cont main__icon-cont--2">
+					<div class="main__circle--2 main__circle">
+						<a href="">
+							<i class="fa-solid fa-money-bill-transfer"></i>
+						</a>
+					</div>
+					<p class="main__paragraph--2">make a withdrawal</p>
+				</div>
+				<div class="main__icon-cont main__icon-cont--3">
+					<div class="main__circle--3 main__circle">
+						<a href="./trading.html">
+							<i class="fa-solid fa-arrow-trend-up"></i>
+						</a>
+					</div>
+					<p class="main__paragraph--3">start trading</p>
+				</div>
+			</section>
+		</main>
+		<footer class="register__footer">
+			<div class="register__footer-div">
+				<hr />
+				<p class="register__footer-p">
+					<span>broker sim</span> is an Interactive simulator of a brokerage
+					account. Simulates buys and sells with real live data. Learn and try
+					before you jump into real markets. We do not deal with real money.
+				</p>
+			</div>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+		<script src="../js/components/burguer-menu.js"></script>
+		<script src="../js/components/open-market.js"></script>
+	</body>
 </html>

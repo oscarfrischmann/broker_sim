@@ -18,6 +18,12 @@ const afterMarketClose = DateTime.fromObject(
 	{ hour: 20 },
 	{ zone: "America/New_York" }
 );
+
+const statusParag = document.getElementById('marketStatus');
+const statusSpan = document.getElementById('marketStatusSpan');
+const lightBulb = document.getElementById('status-light');
+
+
 if (
 	now.weekday !== 6 &&
 	now.weekday !== 7 &&
@@ -25,20 +31,25 @@ if (
 	now < marketClose
 ) {
 	console.log(`Markets are Open, start tranding!!!`);
+	lightBulb.style.backgroundColor = 'green'
+	
 } else if (
 	now.weekday !== 6 &&
 	now.weekday !== 7 &&
 	now >= preMarketOpen &&
 	now <= marketOpen
-) {
-	console.log("Pre Market trading open");
-} else if (
-	now.weekday !== 6 &&
-	now.weekday !== 7 &&
-	now >= marketClose &&
-	now <= afterMarketClose
-) {
-	console.log("After Hours trading open");
-} else {
-	console.log("Markets are CLOSED, go out and have fun!!!");
+	) {
+		console.log("Pre Market trading open");
+		lightBulb.style.backgroundColor = 'orange'
+	} else if (
+		now.weekday !== 6 &&
+		now.weekday !== 7 &&
+		now >= marketClose &&
+		now <= afterMarketClose
+		) {
+			console.log("After Hours trading open");
+			lightBulb.style.backgroundColor = 'blue'
+		} else {
+			console.log("Markets are CLOSED, go out and have fun!!!");
+			lightBulb.style.backgroundColor = 'red'
 }
