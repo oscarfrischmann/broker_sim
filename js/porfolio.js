@@ -1,5 +1,12 @@
 const stocks = [];
 const userPortfolio = [];
+const userAccountName = localStorage.getItem('userName');
+const userParse = JSON.parse(userAccountName);
+
+const userSpan = document.getElementById('userAccountName');
+
+userSpan.textContent = `${userParse} Account`;
+
 
 console.log(stocks);
 class Stocks {

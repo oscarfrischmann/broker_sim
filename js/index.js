@@ -59,7 +59,9 @@ Funcionalidad:
 
 
 const user = [];
-const stocks = [];
+const stocks = ['AAL', 'AMD', 'AMZN', 'BA', 'BAC', 'C', 'DESP', 'DIS', 'F', 'GOLD', 'GOOG', 'GM', 'INTC', 'JNJ', 'KO', 'MELI', 'META'
+, 'MCD', 'MSFT', 'NFLX', 'NKE', 'NVDA', 'PFE', 'PBR', 'PEP', 'PG', 'QQQ', 'QCOM', 'RIO', 'SPY', 'SBUX', 'TGT', 'TSLA', 'V', 'WMT'
+, 'XOM', 'YPF'];
 let password, settledCash;
 const userPortfolio = [];
 class Stocks {
@@ -75,16 +77,16 @@ class Stocks {
 }
 
 //Esperando integrar con una API que provea datos en tiempo real!!!!!
-stocks.push(new Stocks('KO', 60.57, 'USD'));
-stocks.push(new Stocks('DIS', 85.96, 'USD'));
-stocks.push(new Stocks('JNJ', 159.10, 'USD'));
-stocks.push(new Stocks('CAT', 263.81, 'USD'));
-stocks.push(new Stocks('PFE', 36.25, 'USD'));
-stocks.push(new Stocks('GOOG', 124.08, 'USD'));
-stocks.push(new Stocks('NVDIA', 474.94, 'USD'));
-stocks.push(new Stocks('META', 312.05, 'USD'));
-stocks.push(new Stocks('MELI', 1208.66, 'USD'));
-stocks.push(new Stocks('TSLA', 293.34, 'USD'));
+// stocks.push(new Stocks('KO', 60.57, 'USD'));
+// stocks.push(new Stocks('DIS', 85.96, 'USD'));
+// stocks.push(new Stocks('JNJ', 159.10, 'USD'));
+// stocks.push(new Stocks('CAT', 263.81, 'USD'));
+// stocks.push(new Stocks('PFE', 36.25, 'USD'));
+// stocks.push(new Stocks('GOOG', 124.08, 'USD'));
+// stocks.push(new Stocks('NVDIA', 474.94, 'USD'));
+// stocks.push(new Stocks('META', 312.05, 'USD'));
+// stocks.push(new Stocks('MELI', 1208.66, 'USD'));
+// stocks.push(new Stocks('TSLA', 293.34, 'USD'));
 
 let stocksJSON = JSON.stringify(stocks);
 localStorage.setItem('stocks', stocksJSON);
