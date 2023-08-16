@@ -143,3 +143,15 @@ remove.addEventListener("click", () => {
 		} (~${(fullQuantity * selected['05. price']).toFixed(2)} USD)`;
 	}
 });
+
+confirmBtn.addEventListener('click', ()=> {
+	if (orderType.innerText === "Sell Order"){
+		console.log("It's a sell order");
+	} else if(orderType.innerText === "Buy Order"){
+		console.log("It's a buy order");
+	}else if (orderType.innerText === "") {
+		console.log('Select order type');
+	}else if(fullQuantity === 0){
+		console.log ('blaaa');
+	}
+});
