@@ -59,7 +59,7 @@ Funcionalidad:
 
 
 const user = [];
-const stocks = ['AAL', 'AMD', 'AMZN', 'BA', 'BAC', 'C', 'DESP', 'DIS', 'F', 'GOLD', 'GOOG', 'GM', 'INTC', 'JNJ', 'KO', 'MELI', 'META'
+const stocks = ['AAL', 'AMD', 'AMZN', 'BA', 'BAC', 'C', 'CAT', 'DESP', 'DIS', 'F', 'GGAL', 'GOLD', 'GOOG', 'GM', 'INTC', 'JNJ', 'KO', 'MELI', 'META'
 , 'MCD', 'MSFT', 'NFLX', 'NKE', 'NVDA', 'PFE', 'PBR', 'PEP', 'PG', 'QQQ', 'QCOM', 'RIO', 'SPY', 'SBUX', 'TGT', 'TSLA', 'V', 'WMT'
 , 'XOM', 'YPF'];
 let password, settledCash;
