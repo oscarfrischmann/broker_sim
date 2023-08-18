@@ -42,8 +42,10 @@
 				</p>
 				<div class="status__light" id="status-light"></div>
 			</div>
-			<h2>portfolio <span id="userAccountName"></span></h2>
-			
+			<h2 class="portfolio__h2">
+				portfolio <span id="userAccountName" class="portfolio__span"></span>
+			</h2>
+
 			<div id="fullData" class="full-data"></div>
 
 			<table class="table">
@@ -52,14 +54,23 @@
 						<th>instrument</th>
 						<th>position</th>
 						<th>price</th>
-						<th>change</th>
+						<!-- <th>change</th> -->
 						<th>value</th>
 					</tr>
 				</thead>
 				<tbody id="tableBody"></tbody>
 			</table>
 		</main>
-
+		<footer class="register__footer">
+			<div class="register__footer-div">
+				<hr />
+				<p class="register__footer-p">
+					<span>broker sim</span> is an Interactive simulator of a brokerage
+					account. Simulates buys and sells with real live data. Learn and try
+					before you jump into real markets. We do not deal with real money.
+				</p>
+			</div>
+		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
 		<script src="../js/components/get-data.js"></script>
 		<script src="../js/components/burguer-menu.js"></script>

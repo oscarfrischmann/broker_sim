@@ -1,44 +1,11 @@
-const stocks = [];
-const userPortfolio = [];
+// const stocks = [];
+let userPortfolio = [];
 const userAccountName = localStorage.getItem('userName');
 const userParse = JSON.parse(userAccountName);
 
 const userSpan = document.getElementById('userAccountName');
 
-userSpan.textContent = `${userParse} Account`;
-
-
-console.log(stocks);
-class Stocks {
-	constructor(ticker, price, currency, quantity) {
-		this.ticker = ticker;
-		this.price = price;
-		this.currency = currency;
-		this.quantity = quantity;
-	}
-	newPrice() {
-		this.price = stocks.forEach((e) => e.price);
-	}
-}
-
-stocks.push(new Stocks("KO", 60.57, "USD"));
-stocks.push(new Stocks("DIS", 85.96, "USD"));
-stocks.push(new Stocks("JNJ", 159.1, "USD"));
-stocks.push(new Stocks("CAT", 263.81, "USD"));
-stocks.push(new Stocks("PFE", 36.25, "USD"));
-stocks.push(new Stocks("GOOG", 124.08, "USD"));
-stocks.push(new Stocks("NVDIA", 474.94, "USD"));
-stocks.push(new Stocks("META", 312.05, "USD"));
-stocks.push(new Stocks("MELI", 1208.66, "USD"));
-stocks.push(new Stocks("TSLA", 293.34, "USD"));
-userPortfolio.push(new Stocks("TSLA", 293.34, "USD", 10));
-userPortfolio.push(new Stocks("KO", 60.57, "USD", 150));
-userPortfolio.push(new Stocks("MELI", 1208.66, "USD", 20));
-userPortfolio.push(new Stocks("GOOG", 124.08, "USD", 5));
-
-console.log(stocks);
-let stocksJSON = JSON.stringify(stocks);
-localStorage.setItem("stocks", stocksJSON);
+userSpan.textContent = `: ${userParse}'s Account`;
 
 function changePrices() {
 	for (let i = 0; i < stocks.length; i++) {
@@ -68,10 +35,15 @@ function userPortfolioPriceUpdate() {
 	});
 }
 
-const randomPrice = setInterval(changePrices, 5000);
-setTimeout(() => {
-	clearInterval(randomPrice);
-}, 120000);
+// const randomPrice = setInterval(changePrices, 5000);
+// setTimeout(() => {
+// 	clearInterval(randomPrice);
+// }, 120000);
+
+const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
+userPortfolio = JSON.parse(userPortfolioGETITEM);
+console.log(userPortfolio);
+
 
 const tableBody = document.getElementById("tableBody");
 
@@ -81,16 +53,14 @@ userPortfolio.forEach((stock) => {
 	const tableDataTicker = document.createElement("td");
 	const tableDataQuantity = document.createElement("td");
 	const tableDataPrice = document.createElement("td");
-	const tableDataChange = document.createElement("td");
+	// const tableDataChange = document.createElement("td");
 	const tableDataValue = document.createElement("td");
 	tableBody.appendChild(tableRow);
-	tableRow.appendChild(tableDataTicker).innerHTML = `${stock.ticker}`;
+	tableRow.appendChild(tableDataTicker).innerHTML = `${stock.symbol}`;
 	tableRow.appendChild(tableDataQuantity).innerHTML = `${stock.quantity}`;
 	tableRow.appendChild(tableDataPrice).innerHTML = ` ${stock.price}`;
-	tableRow.appendChild(tableDataChange).innerHTML = ` ${stock.currency}`;
-	tableRow.appendChild(tableDataValue).innerHTML = ` ${(
-		stock.price * stock.quantity
-	).toFixed(2)}`;
+	// tableRow.appendChild(tableDataChange).innerHTML = ` ${stock.currency}`;
+	tableRow.appendChild(tableDataValue).innerHTML = ` ${stock.totalValue.toFixed(2)}`;
 });
 
 function refreshTable() {
@@ -105,10 +75,10 @@ function refreshTable() {
 }
 
 // Dentro de tu función de intervalo o cada vez que cambien los datos
-setInterval(() => {
-	// Actualizar los precios de las acciones aquí
-	refreshTable(); // Actualizar la tabla con los nuevos datos
-}, 5001);
+// setInterval(() => {
+// 	// Actualizar los precios de las acciones aquí
+// 	refreshTable(); // Actualizar la tabla con los nuevos datos
+// }, 5001);
 
 // const portfolioFullData = {
 //     aviableCash: ,

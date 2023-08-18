@@ -491,10 +491,17 @@ body {
   display: none;
 }
 
+.portfolio__h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
 .table {
   width: 90vw;
   margin: 30px auto;
   border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 .table th {
   font-family: "Roboto", sans-serif;

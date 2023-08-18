@@ -1,22 +1,31 @@
-    .table {
-        width: 90vw;
-        margin: 30px auto;
-        border-top: 1px solid;
-
-        th {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 100;
-            text-align: left;
-            text-transform: uppercase;
-            font-size: 0.77rem;
-            height: 50px;
-        }
-
-        tr {
-            font-family: 'Roboto', sans-serif;
-            height: 35px;
-            font-weight: 400;
-            font-size: 1rem;
-        }
-
+.portfolio {
+    &__h2 {
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin: 1rem;
     }
+}
+
+
+.table {
+    width: 90vw;
+    margin: 30px auto;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+
+    th {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 100;
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 0.77rem;
+        height: 50px;
+    }
+
+    tr {
+        font-family: 'Roboto', sans-serif;
+        height: 35px;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}
