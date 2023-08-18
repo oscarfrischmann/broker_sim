@@ -45,15 +45,19 @@ let userPortfolio = [];
 stockSelect.addEventListener("change", () => {
 	selectValue = stockSelect.value;
 
-	//! API calls count
-	let getApiCall = localStorage.getItem("API Calls");
-	getApiCall++;
-	if (getApiCall > 900) {
-		alert(`${getApiCall} realizadas`);
-	}
-	localStorage.setItem("API Calls", getApiCall);
-	console.log(`${getApiCall} API calls of 1000`);
-	//! API calls count end
+	// //! API calls count
+	// let getApiCall = localStorage.getItem("API Calls");
+	// getApiCall++;
+	// if (getApiCall > 900) {
+	// 	alert(`${getApiCall} realizadas`);
+	// }
+	// localStorage.setItem("API Calls", getApiCall);
+	// console.log(`${getApiCall} API calls of 1000`);
+	// //! API calls count end
+	confirmBtn.classList.toggle("display-none");
+	setTimeout(() => {
+		confirmBtn.classList.toggle("display-none");
+	}, 1500);
 
 	const url = `https://stock-and-options-trading-data-provider.p.rapidapi.com/options/${selectValue}`;
 	const options = {
@@ -65,11 +69,20 @@ stockSelect.addEventListener("change", () => {
 				"stock-and-options-trading-data-provider.p.rapidapi.com",
 		},
 	};
+	if (userSelection.length > 0) {
+		console.log("Ya se habían selecionado acciones");
+		setTimeout(() => {
+			fullQuantity = numberQuantity;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
+				stockSelect.value
+			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+		}, 1000);
+	}
 	(async function () {
 		try {
 			const stockData = await fetch(url, options);
 			const parseStockData = await stockData.json();
-			console.log(parseStockData.stock.currency);
+			console.log(parseStockData.stock.shortName);
 			userSelection.push(parseStockData.stock);
 			for (selected of userSelection) {
 				if (selected.symbol.includes(selectValue)) {
@@ -80,7 +93,7 @@ stockSelect.addEventListener("change", () => {
 			// const stockDataJSON = JSON.stringify(parseStockData);
 			// sessionStorage.setItem("stock", stockDataJSON);
 			// console.log(stockDataJSON);
-			console.log("userSelection", userSelection);
+			// console.log("userSelection", userSelection);
 		} catch (e) {
 			console.log("Error", e);
 		}
@@ -91,30 +104,33 @@ let remove = document.getElementById("remove");
 let add = document.getElementById("add");
 let quantity = document.getElementById("quantity");
 let showQuantity = document.getElementById("showQuantity");
-let numberQuantity;
+let numberQuantity; //!input value
 let fullQuantity = 0;
 
 add.addEventListener("click", () => {
 	numberQuantity = Number(quantity.value);
 	fullQuantity += numberQuantity;
-
+	console.log(fullQuantity);
 	if (fullQuantity * selected.realtimePrice > userCash) {
 		showQuantity.innerText = "Not enought money in your account";
 		setTimeout(() => {
-			fullQuantity -= numberQuantity;
+			fullQuantity -= fullQuantity;
 			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
 				stockSelect.value
 			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 3000);
+		console.log(fullQuantity);
 	} else {
 		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
 			stockSelect.value
 		} (~ ${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+		console.log(fullQuantity);
 	}
 });
 remove.addEventListener("click", () => {
 	numberQuantity = Number(quantity.value);
 	fullQuantity -= numberQuantity;
+	console.log(fullQuantity);
 
 	if (fullQuantity <= 0) {
 		showQuantity.innerText = "Quantity can not be less than 0";
@@ -124,11 +140,13 @@ remove.addEventListener("click", () => {
 				stockSelect.value
 			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 3000);
+		console.log(fullQuantity);
 	} else {
 		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
 			stockSelect.value
 		} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 	}
+	console.log(fullQuantity);
 });
 
 confirmBtn.addEventListener("click", () => {
@@ -140,7 +158,7 @@ confirmBtn.addEventListener("click", () => {
 		} else if (orderType.innerText === "Buy Order") {
 			console.log(`It's a buy order for ${selected.shortName}`);
 			if (userPortfolio.length === 0) {
-				console.log("userPortoflio.length === 0");
+				console.log("Primer objeto en userPortfolio");
 				userPortfolio.push(
 					new Stock(
 						selected.symbol,
@@ -152,20 +170,16 @@ confirmBtn.addEventListener("click", () => {
 			} else {
 				if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
 					console.log("REPETIDA");
-					userPortfolio.forEach((userStock) => {
-						console.log(userStock);
-						const matchingStock = userPortfolio.find(
-							(stockItem) => stockItem.symbol === selected.symbol
-						);
-						console.log(matchingStock);
-						if (matchingStock) {
-							matchingStock.quantity = fullQuantity + userStock.quantity;
-							matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
-							// console.log(userStock.quantity);
-							// console.log(fullQuantity);
-							// console.log(matchingStock.quantity);
-						}
-					});
+					const matchingStock = userPortfolio.find(
+						(stockItem) => stockItem.symbol === selected.symbol
+					);
+					console.log(matchingStock);
+					matchingStock.quantity = fullQuantity + matchingStock.quantity;
+					console.log(matchingStock);
+					matchingStock.totalValue = (
+						matchingStock.quantity * matchingStock.price
+					).toFixed(2);
+					console.log(typeof matchingStock.totalValue);
 				} else {
 					console.log("NO repetida");
 					userPortfolio.push(
@@ -188,7 +202,7 @@ confirmBtn.addEventListener("click", () => {
 	} else {
 		console.log("There are no stocks nor quantity selected. Please Select");
 	}
-	console.log(userPortfolio);
+	console.log("userPortfolio", userPortfolio);
 });
 
 class Stock {
