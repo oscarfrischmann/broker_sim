@@ -1,4 +1,4 @@
-// const stocks = [];
+const stocks = [];
 let userPortfolio = [];
 const userAccountName = localStorage.getItem('userName');
 const userParse = JSON.parse(userAccountName);
@@ -60,7 +60,7 @@ userPortfolio.forEach((stock) => {
 	tableRow.appendChild(tableDataQuantity).innerHTML = `${stock.quantity}`;
 	tableRow.appendChild(tableDataPrice).innerHTML = ` ${stock.price}`;
 	// tableRow.appendChild(tableDataChange).innerHTML = ` ${stock.currency}`;
-	tableRow.appendChild(tableDataValue).innerHTML = ` ${stock.totalValue.toFixed(2)}`;
+	tableRow.appendChild(tableDataValue).innerHTML = ` ${parseFloat(stock.totalValue).toFixed(2)}`;
 });
 
 function refreshTable() {
