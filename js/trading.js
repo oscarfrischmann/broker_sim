@@ -43,17 +43,18 @@ let userSelection = [];
 let userPortfolio = [];
 
 stockSelect.addEventListener("change", () => {
-	selectValue = stockSelect.value;
+	//! API calls count
+	let getApiCall = localStorage.getItem("API Calls");
+	getApiCall++;
+	if (getApiCall > 900) {
+		alert(`${getApiCall} realizadas`);
+	}
+	localStorage.setItem("API Calls", getApiCall);
+	console.log(`${getApiCall} API calls of 1000`);
+	//! API calls count end
 
-	// //! API calls count
-	// let getApiCall = localStorage.getItem("API Calls");
-	// getApiCall++;
-	// if (getApiCall > 900) {
-	// 	alert(`${getApiCall} realizadas`);
-	// }
-	// localStorage.setItem("API Calls", getApiCall);
-	// console.log(`${getApiCall} API calls of 1000`);
-	// //! API calls count end
+	selectValue = stockSelect.value;
+	//*wait for response before user confirm
 	confirmBtn.classList.toggle("display-none");
 	setTimeout(() => {
 		confirmBtn.classList.toggle("display-none");
@@ -69,6 +70,8 @@ stockSelect.addEventListener("change", () => {
 				"stock-and-options-trading-data-provider.p.rapidapi.com",
 		},
 	};
+
+	//*reset quantity after selection
 	if (userSelection.length > 0) {
 		console.log("Ya se habían selecionado acciones");
 		setTimeout(() => {
@@ -78,6 +81,7 @@ stockSelect.addEventListener("change", () => {
 			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 1000);
 	}
+
 	(async function () {
 		try {
 			const stockData = await fetch(url, options);
@@ -104,9 +108,10 @@ let remove = document.getElementById("remove");
 let add = document.getElementById("add");
 let quantity = document.getElementById("quantity");
 let showQuantity = document.getElementById("showQuantity");
-let numberQuantity; //!input value
+let numberQuantity; //input value
 let fullQuantity = 0;
 
+//*add quantity btn
 add.addEventListener("click", () => {
 	numberQuantity = Number(quantity.value);
 	fullQuantity += numberQuantity;
@@ -127,6 +132,8 @@ add.addEventListener("click", () => {
 		console.log(fullQuantity);
 	}
 });
+
+//*remove quantity btn
 remove.addEventListener("click", () => {
 	numberQuantity = Number(quantity.value);
 	fullQuantity -= numberQuantity;
@@ -150,14 +157,39 @@ remove.addEventListener("click", () => {
 });
 
 confirmBtn.addEventListener("click", () => {
+	const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
+	userPortfolio = JSON.parse(userPortfolioGETITEM);
+	console.log(userPortfolio);
+
 	console.log(fullQuantity);
 	if (selected && fullQuantity > 0) {
 		if (orderType.innerText === "Sell Order") {
 			console.log(`It's a sell order for ${selected.shortName}`);
 			console.log(selected);
+			if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
+				const matchingStock = userPortfolio.find(
+					(stockItem) => stockItem.symbol === selected.symbol
+				);
+				console.log(
+					`You have ${matchingStock.quantity} ${matchingStock.symbol} to SELL`
+				);
+				if (matchingStock.quantity < fullQuantity) {
+					console.log("No tienes tantas acciones para vender");
+				} else {
+					console.log(matchingStock);
+					matchingStock.quantity = matchingStock.quantity - fullQuantity;
+					console.log(matchingStock);
+					matchingStock.totalValue = (
+						matchingStock.quantity * matchingStock.price
+					).toFixed(2);
+					console.log(typeof matchingStock.totalValue);
+				}
+			} else {
+				console.log(`No ${selectValue} stocks in your portfolio to SELL`);
+			}
 		} else if (orderType.innerText === "Buy Order") {
 			console.log(`It's a buy order for ${selected.shortName}`);
-			if (userPortfolio.length === 0) {
+			if (!userPortfolio) {
 				console.log("Primer objeto en userPortfolio");
 				userPortfolio.push(
 					new Stock(
@@ -202,7 +234,15 @@ confirmBtn.addEventListener("click", () => {
 	} else {
 		console.log("There are no stocks nor quantity selected. Please Select");
 	}
-	console.log("userPortfolio", userPortfolio);
+	if(userPortfolio.find(quantity => quantity.quantity === 0)) {
+		let emptyStock = userPortfolio.find(quantity => quantity.quantity === 0);
+		let i = userPortfolio.indexOf(emptyStock);
+		userPortfolio.splice(i, 1);
+	}
+
+	console.log("userPortfolio at End of confirmBtn event", userPortfolio);
+	const userPortfolioJSON = JSON.stringify(userPortfolio);
+	localStorage.setItem("userPortfolio", userPortfolioJSON);
 });
 
 class Stock {
@@ -214,161 +254,3 @@ class Stock {
 		this.totalValue = this.price * this.quantity;
 	}
 }
-
-//** ALPHA VANTAGE API */
-// const user = [];
-// let userCash = Number(localStorage.getItem("cash"));
-// let stocksJSON = localStorage.getItem("stocks");
-// let stocksPARSE = JSON.parse(stocksJSON);
-
-// let showCash = document.getElementById("userCash");
-
-// showCash.innerText = `${userCash} USD`;
-// let select = document.getElementById("stocksSelect");
-
-// stocksPARSE.forEach((e) => {
-// 	let eachStock = document.createElement("option");
-// 	eachStock.innerText = e;
-// 	select.appendChild(eachStock);
-// });
-
-// let sellBtn = document.getElementById("sellBtn");
-// let buyBtn = document.getElementById("buyBtn");
-// let confirmBtn = document.getElementById("confirmOrder");
-// let orderType = document.getElementById("orderType");
-// let stockSelect = document.getElementById("stocksSelect");
-// let stockTickerTittle = document.getElementById("stokTicker");
-// let beforeConfirm = document.getElementById("beforeConfirm");
-
-// sellBtn.addEventListener("click", () => {
-// 	beforeConfirm.innerText = "";
-// 	confirmBtn.style.backgroundColor = "red";
-// 	orderType.innerText = "Sell Order";
-// });
-
-// buyBtn.addEventListener("click", () => {
-// 	beforeConfirm.innerText = "";
-// 	confirmBtn.style.backgroundColor = "green";
-// 	orderType.innerText = "Buy Order";
-// });
-// let resultado;
-// let selectValue;
-// let selected;
-// let userSelection = [];
-// // **array para almacenar los valores seleccionados por usuario
-// let userPortfolio = [];
-
-// stockSelect.addEventListener("change", () => {
-// 	selectValue = stockSelect.value;
-// 	//OLD VERSION resultado = stocksPARSE.filter((el) => el.ticker.includes(selectValue));
-// 	//OLD VERSION stockTickerTittle.innerText = `${stockSelect.value} | ${resultado[0].price}`;
-// 	(async function () {
-// 		try {
-// 			const stockData = await fetch(
-// 				`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${selectValue}&apikey=MKDQUB36LVOHY0BL`
-// 			);
-// 			const parseStockData = await stockData.json();
-// 			userSelection.push(parseStockData["Global Quote"]);
-// 			for (selected of userSelection) {
-// 				if (selected["01. symbol"].includes(selectValue)) {
-// 					stockTickerTittle.innerText = `${selected["01. symbol"]} | ${selected["05. price"]}`;
-// 				}
-// 			}
-// 			console.log(parseStockData);
-// 			// const stockDataJSON = JSON.stringify(parseStockData);
-// 			// sessionStorage.setItem("stock", stockDataJSON);
-// 			// console.log(stockDataJSON);
-// 			console.log("userSelection", userSelection);
-// 		} catch (e) {
-// 			console.log("Error", e);
-// 		}
-// 	})();
-// });
-
-// let remove = document.getElementById("remove");
-// let add = document.getElementById("add");
-// let quantity = document.getElementById("quantity");
-// let showQuantity = document.getElementById("showQuantity");
-// let numberQuantity;
-// let fullQuantity = 0;
-
-// add.addEventListener("click", () => {
-// 	numberQuantity = Number(quantity.value);
-// 	fullQuantity += numberQuantity;
-
-// 	if (fullQuantity * selected["05. price"] > userCash) {
-// 		showQuantity.innerText = "Not enought money in your account";
-// 		setTimeout(() => {
-// 			fullQuantity -= numberQuantity;
-// 			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-// 				stockSelect.value
-// 			} (~${(fullQuantity * selected["05. price"]).toFixed(2)} USD)`;
-// 		}, 3000);
-// 	} else {
-// 		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-// 			stockSelect.value
-// 		} (~ ${(fullQuantity * selected["05. price"]).toFixed(2)} USD)`;
-// 	}
-// });
-// remove.addEventListener("click", () => {
-// 	numberQuantity = Number(quantity.value);
-// 	fullQuantity -= numberQuantity;
-
-// 	if (fullQuantity <= 0) {
-// 		showQuantity.innerText = "Quantity can not be less than 0";
-// 		setTimeout(() => {
-// 			fullQuantity += numberQuantity;
-// 			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-// 				stockSelect.value
-// 			} (~${(fullQuantity * selected["05. price"]).toFixed(2)} USD)`;
-// 		}, 3000);
-// 	} else {
-// 		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-// 			stockSelect.value
-// 		} (~${(fullQuantity * selected["05. price"]).toFixed(2)} USD)`;
-// 	}
-// });
-
-// confirmBtn.addEventListener("click", () => {
-// 	console.log(fullQuantity);
-// 	if (selected && fullQuantity > 0) {
-// 		if (orderType.innerText === "Sell Order") {
-// 			console.log("It's a sell order");
-// 			console.log(selected);
-// 		} else if (orderType.innerText === "Buy Order") {
-// 			console.log("It's a buy order");
-// 			if (userPortfolio.length === 0) {
-// 				console.log("userPortoflio.length === 0");
-// 				userPortfolio.push(
-// 					new Stock(
-// 						selected["01. symbol"],
-// 						selected["05. price"],
-// 						selected["09. change"],
-// 						fullQuantity
-// 					)
-// 				);
-// 			} else {
-// 				console.log(userPortfolio[0]["1. symbol"])
-// 			}
-// 		} else if (orderType.innerText === "") {
-// 			console.log("Select order type");
-// 			console.log(selected);
-// 		} else if (fullQuantity === 0) {
-// 			console.log("Select quantity");
-// 			console.log(selected);
-// 		}
-// 	} else {
-// 		console.log("There are no stocks nor quantity selected. Please Select");
-// 	}
-// 	console.log(userPortfolio);
-// });
-
-// class Stock {
-// 	constructor(symbol, price, change, quantity) {
-// 		this.symbol = symbol;
-// 		this.price = price;
-// 		this.change = change;
-// 		this.quantity = quantity;
-// 		this.totalValue = this.price * this.quantity;
-// 	}
-// }
