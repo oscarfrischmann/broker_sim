@@ -156,6 +156,11 @@ remove.addEventListener("click", () => {
 	console.log(fullQuantity);
 });
 
+//! PROGRAMAR PRECIO PROMEDIO DE COMPRA!!!!!!
+//todo ES FUNDAMENTAL QUE ESO FUNCIONE BIEN
+//* ¿Cómo se hace? suma de valoresTotales de cada compra dividido cantidad de acciones
+//todo CONVERTIR todos los push a userPortfolio de totalValue a NUMBER
+
 confirmBtn.addEventListener("click", () => {
 	const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
 	userPortfolio = JSON.parse(userPortfolioGETITEM);
@@ -182,7 +187,6 @@ confirmBtn.addEventListener("click", () => {
 					matchingStock.totalValue = (
 						matchingStock.quantity * matchingStock.price
 					).toFixed(2);
-					console.log(typeof matchingStock.totalValue);
 				}
 			} else {
 				console.log(`No ${selectValue} stocks in your portfolio to SELL`);
@@ -205,9 +209,12 @@ confirmBtn.addEventListener("click", () => {
 					const matchingStock = userPortfolio.find(
 						(stockItem) => stockItem.symbol === selected.symbol
 					);
-					console.log(matchingStock);
 					matchingStock.quantity = fullQuantity + matchingStock.quantity;
-					console.log(matchingStock);
+					console.log(matchingStock.totalValue);
+					console.log(selected.realtimePrice * fullQuantity);
+					console.log(matchingStock.quantity);
+					let averagePrice = (parseFloat(matchingStock.totalValue) + (selected.realtimePrice * fullQuantity)/ parseFloat(matchingStock.quantity));
+					console.log(averagePrice);
 					matchingStock.totalValue = (
 						matchingStock.quantity * matchingStock.price
 					).toFixed(2);
@@ -219,7 +226,7 @@ confirmBtn.addEventListener("click", () => {
 							selected.symbol,
 							selected.realtimePrice,
 							selected["09. change"],
-							fullQuantity
+							parseFloat(fullQuantity),
 						)
 					);
 				}
