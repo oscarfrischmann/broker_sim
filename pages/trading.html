@@ -12,73 +12,69 @@
 
 </head>
 
-<body class="trade">
-    <header class="header mobile">
-        <h1 class="tittle__main mobile">BRO.S</h1>
-        <i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
-        <nav class="burguer__nav display-none" id="navMenu">
-            <ul class="burguer__ul">
-                <li class="burguer__item" id="depositLink"><a href="./make_deposit.html">make deposit</a></li>
-                <hr>
-                <li class="burguer__item" id="tradingLink"><a href="./trading.html">start trading</a></li>
-                <hr>
-                <li class="burguer__item" id=""><a href="./portfolio.html">portfolio</a></li>
-                <hr>
-                <li class="burguer__item" id=""><a href="">withdrawal</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main">
-        <div class="status">
-            <p class="status__paragraph" id="marketStatus">
-                <span class="status__span" id="marketStatusSpan"></span>
-            </p>
-            <div class="status__light" id="status-light"></div>
-        </div>
+<body class="trade" id="body">
+    <div id="trade">
+        <header class="header mobile">
+            <h1 class="tittle__main mobile">BRO.S</h1>
+            <i class="burguer mobile fas fa-regular fa-bars" id="burguerIcon"></i>
+            <nav class="burguer__nav display-none" id="navMenu">
+                <ul class="burguer__ul">
+                    <li class="burguer__item" id="depositLink"><a href="./make_deposit.html">make deposit</a></li>
+                    <hr>
+                    <li class="burguer__item" id="tradingLink"><a href="./trading.html">start trading</a></li>
+                    <hr>
+                    <li class="burguer__item" id=""><a href="./portfolio.html">portfolio</a></li>
+                    <hr>
+                    <li class="burguer__item" id=""><a href="">withdrawal</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="main">
+            <div class="status">
+                <p class="status__paragraph" id="marketStatus">
+                    <span class="status__span" id="marketStatusSpan"></span>
+                </p>
+                <div class="status__light" id="status-light"></div>
+            </div>
 
-        <h2 class="tittle__secondary tarde">trading area</h2>
+            <h2 class="tittle__secondary tarde">trading area</h2>
 
-        <section class="info">
-            <h3>Aviable Cash: <span class="userCash" id="userCash"></span></h3>
-            <div class="info__order">
-                <select name="stocks" id="stocksSelect" class="info__select">
-                    <option>Select Stock</option>
-                </select>
-
-                <div class="buttons">
-                    <button id="buyBtn" class="buy">buy</button>
-                    <button id="sellBtn" class="sell">sell</button>
+            <section class="info">
+                <h3>Aviable Cash: <span class="userCash" id="userCash"></span></h3>
+                <div class="info__order">
+                    <select name="stocks" id="stocksSelect" class="info__select">
+                        <option>Select Stock</option>
+                    </select>
+                    <div class="buttons">
+                        <button id="buyBtn" class="buy">buy</button>
+                        <button id="sellBtn" class="sell">sell</button>
+                    </div>
                 </div>
+                <div class="info__selec" style="font-size: 0">
+                    <button id="remove" class="info__btn--remove">remove</button>
+                    <input type="number" name="sotcksQuantity" id="quantity" class="info__input" placeholder="(quantity)" value="1"></input>
+                    <button id="add" class="info__btn--add">add</button>
+                </div>
+            </section>
+            <section class="card" id="tradeCard">
+                <div class="card__container deposit__card">
+                    <h4 id="orderType" class="card__tittle"></h4>
+                    <span id="stokTicker" class="card__stock"></span>
+                    <span id="showQuantity" class="card__quantity"></span>
+                </div>
+            </section>
+            <span class="before-confirm" id="beforeConfirm">Select BUY or SELL before confirm order.</span>
+            <button class="confirm" id="confirmOrder">CONFIRM ORDER</button>
+        </main>
+        <footer class="register__footer">
+            <div class="register__footer-div">
+                <hr>
+                <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
+                    Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
+                    deal with real money.</p>
             </div>
-            <div class="info__selec" style="font-size: 0">
-                <button id="remove" class="info__btn--remove">remove</button>
-                <input type="number" name="sotcksQuantity" id="quantity" class="info__input"
-                    placeholder="(quantity)" value="1"></input>
-                <button id="add" class="info__btn--add">add</button>
-            </div>
-        </section>
-
-
-        <section class="card" id="tradeCard">
-            <div class="card__container deposit__card">
-                <h4 id="orderType" class="card__tittle"></h4>
-                <span id="stokTicker" class="card__stock"></span>
-                <span id="showQuantity" class="card__quantity"></span>
-            </div>
-        </section>
-        <span class="before-confirm" id="beforeConfirm">Select BUY or SELL before confirm order.</span>
-        <button class="confirm" id="confirmOrder">CONFIRM ORDER</button>
-        
-
-    </main>
-    <footer class="register__footer">
-        <div class="register__footer-div">
-            <hr>
-            <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
-                Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
-                deal with real money.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
     <script src="../js/components/get-data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
     <script src="../js/components/burguer-menu.js"></script>

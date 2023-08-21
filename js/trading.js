@@ -1,4 +1,6 @@
-//* NEW API
+
+
+
 
 const user = [];
 let userCash = Number(localStorage.getItem("cash"));
@@ -76,9 +78,8 @@ stockSelect.addEventListener("change", () => {
 		console.log("Ya se habían selecionado acciones");
 		setTimeout(() => {
 			fullQuantity = numberQuantity;
-			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-				stockSelect.value
-			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
+				} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 1000);
 	}
 
@@ -120,15 +121,13 @@ add.addEventListener("click", () => {
 		showQuantity.innerText = "Not enought money in your account";
 		setTimeout(() => {
 			fullQuantity -= fullQuantity;
-			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-				stockSelect.value
-			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
+				} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 3000);
 		console.log(fullQuantity);
 	} else {
-		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-			stockSelect.value
-		} (~ ${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+		showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
+			} (~ ${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		console.log(fullQuantity);
 	}
 });
@@ -143,23 +142,16 @@ remove.addEventListener("click", () => {
 		showQuantity.innerText = "Quantity can not be less than 0";
 		setTimeout(() => {
 			fullQuantity += numberQuantity;
-			showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-				stockSelect.value
-			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+			showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
+				} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 3000);
 		console.log(fullQuantity);
 	} else {
-		showQuantity.innerText = `Quantity: ${fullQuantity} of ${
-			stockSelect.value
-		} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+		showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
+			} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 	}
 	console.log(fullQuantity);
 });
-
-//! PROGRAMAR PRECIO PROMEDIO DE COMPRA!!!!!!
-//todo ES FUNDAMENTAL QUE ESO FUNCIONE BIEN
-//* ¿Cómo se hace? suma de valoresTotales de cada compra dividido cantidad de acciones
-//todo CONVERTIR todos los push a userPortfolio de totalValue a NUMBER
 
 confirmBtn.addEventListener("click", () => {
 	const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
@@ -193,14 +185,15 @@ confirmBtn.addEventListener("click", () => {
 			}
 		} else if (orderType.innerText === "Buy Order") {
 			console.log(`It's a buy order for ${selected.shortName}`);
-			if (!userPortfolio) {
+			if (userPortfolio.length === 0) {
 				console.log("Primer objeto en userPortfolio");
 				userPortfolio.push(
 					new Stock(
 						selected.symbol,
 						selected.realtimePrice,
 						selected["09. change"],
-						fullQuantity
+						fullQuantity,
+						undefined,
 					)
 				);
 			} else {
@@ -209,16 +202,20 @@ confirmBtn.addEventListener("click", () => {
 					const matchingStock = userPortfolio.find(
 						(stockItem) => stockItem.symbol === selected.symbol
 					);
+					//! REVISAR change
+					let change = 0;
+					matchingStock.price < selected.realtimePrice ? change = selected.realtimePrice - matchingStock.price : change = matchingStock.price - selected.realtimePrice;
+					// if (matchingStock.price < selected.realtimePrice) {
+					// 	change = selected.realtimePrice - matchingStock.price;
+					// } else {
+					// 	change = matchingStock.price - selected.realtimePrice;
+					// }
+					//! REVISAR averagePrice
+					let averagePrice = (matchingStock.totalValue + (fullQuantity * selected.realtimePrice)) / (matchingStock.quantity + fullQuantity);
 					matchingStock.quantity = fullQuantity + matchingStock.quantity;
-					console.log(matchingStock.totalValue);
-					console.log(selected.realtimePrice * fullQuantity);
-					console.log(matchingStock.quantity);
-					let averagePrice = (parseFloat(matchingStock.totalValue) + (selected.realtimePrice * fullQuantity)/ parseFloat(matchingStock.quantity));
-					console.log(averagePrice);
-					matchingStock.totalValue = (
-						matchingStock.quantity * matchingStock.price
-					).toFixed(2);
-					console.log(typeof matchingStock.totalValue);
+					matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
+					matchingStock.averagePrice = averagePrice;
+					matchingStock.change = change;
 				} else {
 					console.log("NO repetida");
 					userPortfolio.push(
@@ -226,7 +223,8 @@ confirmBtn.addEventListener("click", () => {
 							selected.symbol,
 							selected.realtimePrice,
 							selected["09. change"],
-							parseFloat(fullQuantity),
+							fullQuantity,
+							undefined,
 						)
 					);
 				}
@@ -241,8 +239,8 @@ confirmBtn.addEventListener("click", () => {
 	} else {
 		console.log("There are no stocks nor quantity selected. Please Select");
 	}
-	if(userPortfolio.find(quantity => quantity.quantity === 0)) {
-		let emptyStock = userPortfolio.find(quantity => quantity.quantity === 0);
+	if (userPortfolio.find((quantity) => quantity.quantity === 0)) {
+		let emptyStock = userPortfolio.find((quantity) => quantity.quantity === 0);
 		let i = userPortfolio.indexOf(emptyStock);
 		userPortfolio.splice(i, 1);
 	}
@@ -253,11 +251,12 @@ confirmBtn.addEventListener("click", () => {
 });
 
 class Stock {
-	constructor(symbol, price, change, quantity) {
+	constructor(symbol, price, change, quantity, averagePrice) {
 		this.symbol = symbol;
 		this.price = price;
 		this.change = change;
 		this.quantity = quantity;
 		this.totalValue = this.price * this.quantity;
+		this.averagePrice = averagePrice;
 	}
 }

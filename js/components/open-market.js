@@ -34,6 +34,7 @@ if (
 	console.log(`Markets are Open, start tranding!!!`);
 	lightBulb.style.backgroundColor = 'green';
 	statusSpan.innerText = 'Market Open';
+	stateOfConfirmBtn(false, '')
 	
 } else if (
 	now.weekday !== 6 &&
@@ -44,6 +45,7 @@ if (
 		console.log("Pre Market trading open");
 		lightBulb.style.backgroundColor = 'orange'
 		statusSpan.innerText = 'Pre market trading';
+		stateOfConfirmBtn(true, 'grey')
 	} else if (
 		now.weekday !== 6 &&
 		now.weekday !== 7 &&
@@ -53,8 +55,17 @@ if (
 			console.log("After Hours trading open");
 			lightBulb.style.backgroundColor = '#2962FF'
 			statusSpan.innerText = 'After hours trading';
+			stateOfConfirmBtn(true, 'grey')
 		} else {
 			console.log("Markets are CLOSED, go out and have fun!!!");
 			lightBulb.style.backgroundColor = 'red';
 			statusSpan.innerText = 'Market closed';
+			stateOfConfirmBtn(true, 'grey')
+}
+
+function stateOfConfirmBtn(state, color) {
+	console.log("Pre Market and After Hours DISABLED!! Can't TRADE RIGHT NOW");
+	const confirmOrder = document.getElementById('confirmOrder');
+	confirmOrder.disabled = state;
+	confirmOrder.style.backgroundColor = color;
 }
