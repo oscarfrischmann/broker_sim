@@ -63,9 +63,8 @@ if (
 			stateOfConfirmBtn(true, 'grey')
 }
 
-function stateOfConfirmBtn(state, color) {
-	console.log("Pre Market and After Hours DISABLED!! Can't TRADE RIGHT NOW");
-	const confirmOrder = document.getElementById('confirmOrder');
-	confirmOrder.disabled = state;
-	confirmOrder.style.backgroundColor = color;
-}
+// function stateOfConfirmBtn(state, color) {
+// 	const confirmOrder = document.getElementById('confirmOrder');
+// 	confirmOrder.disabled = state;
+// 	confirmOrder.style.backgroundColor = color;
+// }

@@ -4,6 +4,7 @@
 
 const user = [];
 let userCash = Number(localStorage.getItem("cash"));
+console.log(userCash);
 let stocksJSON = localStorage.getItem("stocks");
 let stocksPARSE = JSON.parse(stocksJSON);
 
@@ -77,7 +78,7 @@ stockSelect.addEventListener("change", () => {
 	if (userSelection.length > 0) {
 		console.log("Ya se habían selecionado acciones");
 		setTimeout(() => {
-			fullQuantity = numberQuantity;
+			fullQuantity = numberQuantity;//!CAMBIAMOS realtimePrice x realtimePrice
 			showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
 				} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 		}, 1000);
@@ -162,7 +163,6 @@ confirmBtn.addEventListener("click", () => {
 	if (selected && fullQuantity > 0) {
 		if (orderType.innerText === "Sell Order") {
 			console.log(`It's a sell order for ${selected.shortName}`);
-			console.log(selected);
 			if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
 				const matchingStock = userPortfolio.find(
 					(stockItem) => stockItem.symbol === selected.symbol
@@ -191,38 +191,32 @@ confirmBtn.addEventListener("click", () => {
 					new Stock(
 						selected.symbol,
 						selected.realtimePrice,
-						selected["09. change"],
 						fullQuantity,
 						undefined,
 					)
 				);
+				userCash -= fullQuantity * selected.realtimePrice;
+				localStorage.setItem('cash', userCash);
+				console.log(userCash)
 			} else {
 				if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
 					console.log("REPETIDA");
 					const matchingStock = userPortfolio.find(
 						(stockItem) => stockItem.symbol === selected.symbol
 					);
-					//! REVISAR change
-					let change = 0;
-					matchingStock.price < selected.realtimePrice ? change = selected.realtimePrice - matchingStock.price : change = matchingStock.price - selected.realtimePrice;
-					// if (matchingStock.price < selected.realtimePrice) {
-					// 	change = selected.realtimePrice - matchingStock.price;
-					// } else {
-					// 	change = matchingStock.price - selected.realtimePrice;
-					// }
-					//! REVISAR averagePrice
-					let averagePrice = (matchingStock.totalValue + (fullQuantity * selected.realtimePrice)) / (matchingStock.quantity + fullQuantity);
+					matchingStock.averagePrice = (matchingStock.totalValue + (fullQuantity * selected.realtimePrice)) / (matchingStock.quantity + fullQuantity);
 					matchingStock.quantity = fullQuantity + matchingStock.quantity;
+					matchingStock.stockChange = selected.realtimePrice - matchingStock.price;
+					matchingStock.price = selected.realtimePrice;
 					matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
-					matchingStock.averagePrice = averagePrice;
-					matchingStock.change = change;
+					matchingStock.cost = matchingStock.averagePrice * matchingStock.quantity;
+					matchingStock.profitLoss = matchingStock.totalValue - matchingStock.cost;
 				} else {
 					console.log("NO repetida");
 					userPortfolio.push(
 						new Stock(
 							selected.symbol,
 							selected.realtimePrice,
-							selected["09. change"],
 							fullQuantity,
 							undefined,
 						)
@@ -251,12 +245,21 @@ confirmBtn.addEventListener("click", () => {
 });
 
 class Stock {
-	constructor(symbol, price, change, quantity, averagePrice) {
+	constructor(symbol, price, quantity) {
 		this.symbol = symbol;
 		this.price = price;
-		this.change = change;
 		this.quantity = quantity;
 		this.totalValue = this.price * this.quantity;
-		this.averagePrice = averagePrice;
 	}
 }
+
+function substractCash() {
+	userCash -= fullQuantity * selected.realtimePrice;
+	localStorage.setItem('cash', userCash);
+	console.log(userCash);
+};
+function addCash() {
+	userCash += fullQuantity * selected.realtimePrice;
+	localStorage.setItem('cash', userCash);
+	console.log(userCash);
+};
