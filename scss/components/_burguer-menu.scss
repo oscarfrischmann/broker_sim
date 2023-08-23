@@ -13,7 +13,7 @@
         right:15px;
         top: 58px;
         background-color: $backgroundSecondary;
-        animation: 1s ease-out burguer;
+        animation: 250ms ease-out burguer;
         overflow-x: hidden;
     }
 
@@ -37,10 +37,10 @@
 
 @keyframes burguer {
     0% {
-        transform: translatex(165px);
+        opacity: 0;
     }
 
     100% {
-        transform: translatex(0px);
+        opacity: 1;
     }
 }

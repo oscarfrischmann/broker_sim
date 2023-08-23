@@ -10,7 +10,7 @@ let stocksPARSE = JSON.parse(stocksJSON);
 
 let showCash = document.getElementById("userCash");
 
-showCash.innerText = `${userCash} USD`;
+showCash.innerText = `${userCash.toFixed(2)} USD`;
 let select = document.getElementById("stocksSelect");
 
 stocksPARSE.forEach((e) => {
@@ -75,14 +75,16 @@ stockSelect.addEventListener("change", () => {
 	};
 
 	//*reset quantity after selection
-	if (userSelection.length > 0) {
-		console.log("Ya se habían selecionado acciones");
-		setTimeout(() => {
-			fullQuantity = numberQuantity;//!CAMBIAMOS realtimePrice x realtimePrice
-			showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value
-				} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
-		}, 1000);
-	}
+
+	// setTimeout(() => {
+	// 	// fullQuantity = numberQuantity;
+	// 	// showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
+	// 	console.log('fullQuantity', fullQuantity);
+	// 	console.log('stockSelect.value', stockSelect.value);
+	// 	console.log('selected.realtimePrice', selected.realtimePrice);
+	// 	console.log('numberQuantity', numberQuantity);
+	// }, 2000);
+
 
 	(async function () {
 		try {
@@ -93,24 +95,24 @@ stockSelect.addEventListener("change", () => {
 			for (selected of userSelection) {
 				if (selected.symbol.includes(selectValue)) {
 					stockTickerTittle.innerText = `${selected.symbol} | ${selected.realtimePrice}`;
+					fullQuantity = numberQuantity;
+					showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
 				}
 			}
 			console.log(parseStockData);
-			// const stockDataJSON = JSON.stringify(parseStockData);
-			// sessionStorage.setItem("stock", stockDataJSON);
-			// console.log(stockDataJSON);
-			// console.log("userSelection", userSelection);
 		} catch (e) {
 			console.log("Error", e);
 		}
 	})();
+	console.log(showQuantity);
+
 });
 
 let remove = document.getElementById("remove");
 let add = document.getElementById("add");
 let quantity = document.getElementById("quantity");
 let showQuantity = document.getElementById("showQuantity");
-let numberQuantity; //input value
+let numberQuantity = 0; //input value
 let fullQuantity = 0;
 
 //*add quantity btn
@@ -179,6 +181,7 @@ confirmBtn.addEventListener("click", () => {
 					matchingStock.totalValue = (
 						matchingStock.quantity * matchingStock.price
 					).toFixed(2);
+					addCash()
 				}
 			} else {
 				console.log(`No ${selectValue} stocks in your portfolio to SELL`);
@@ -192,12 +195,13 @@ confirmBtn.addEventListener("click", () => {
 						selected.symbol,
 						selected.realtimePrice,
 						fullQuantity,
-						undefined,
+						selected.averagePrice = 0,
+						selected.stockChange = 0,
+						selected.cost = selected.realtimePrice * fullQuantity,
+						selected.profitLoss = 0,
 					)
 				);
-				userCash -= fullQuantity * selected.realtimePrice;
-				localStorage.setItem('cash', userCash);
-				console.log(userCash)
+				substractCash()
 			} else {
 				if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
 					console.log("REPETIDA");
@@ -211,6 +215,7 @@ confirmBtn.addEventListener("click", () => {
 					matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
 					matchingStock.cost = matchingStock.averagePrice * matchingStock.quantity;
 					matchingStock.profitLoss = matchingStock.totalValue - matchingStock.cost;
+					substractCash()
 				} else {
 					console.log("NO repetida");
 					userPortfolio.push(
@@ -218,9 +223,13 @@ confirmBtn.addEventListener("click", () => {
 							selected.symbol,
 							selected.realtimePrice,
 							fullQuantity,
-							undefined,
+							selected.averagePrice = 0,
+							selected.stockChange = 0,
+							selected.cost = selected.realtimePrice * fullQuantity,
+							selected.profitLoss = 0,
 						)
 					);
+					substractCash()
 				}
 			}
 		} else if (orderType.innerText === "") {
@@ -238,28 +247,33 @@ confirmBtn.addEventListener("click", () => {
 		let i = userPortfolio.indexOf(emptyStock);
 		userPortfolio.splice(i, 1);
 	}
-
 	console.log("userPortfolio at End of confirmBtn event", userPortfolio);
 	const userPortfolioJSON = JSON.stringify(userPortfolio);
 	localStorage.setItem("userPortfolio", userPortfolioJSON);
 });
 
 class Stock {
-	constructor(symbol, price, quantity) {
+	constructor(symbol, price, quantity, averagePrice, stockChange, cost, profitLoss) {
 		this.symbol = symbol;
 		this.price = price;
 		this.quantity = quantity;
 		this.totalValue = this.price * this.quantity;
+		this.averagePrice = averagePrice;
+		this.stockChange = stockChange;
+		this.cost = cost;
+		this.profitLoss = profitLoss;
 	}
 }
 
 function substractCash() {
 	userCash -= fullQuantity * selected.realtimePrice;
 	localStorage.setItem('cash', userCash);
-	console.log(userCash);
+	showCash.innerText = `${userCash.toFixed(2)} USD`;
+
 };
 function addCash() {
 	userCash += fullQuantity * selected.realtimePrice;
 	localStorage.setItem('cash', userCash);
-	console.log(userCash);
+	showCash.innerText = `${userCash.toFixed(2)} USD`;
+
 };
