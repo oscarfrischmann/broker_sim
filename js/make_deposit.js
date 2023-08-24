@@ -10,6 +10,7 @@ const showSettledCash = document.getElementById("settledCash");
 const userConfirmCash = document.getElementById("userConfirmCash");
 
 depositButton.addEventListener("click", () => {
+	const depositButton = document.getElementById("depositButton");
 	const firstDeposit = document.getElementById("userCashInput").value;
 
 	if (isNaN(firstDeposit) || !firstDeposit) {

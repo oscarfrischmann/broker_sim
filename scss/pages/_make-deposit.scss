@@ -13,6 +13,7 @@
         margin: 0 auto;
         @include flex(center, center, column, 10px);
     }
+
     button {
         width: 30%;
         margin: 1em 0;
@@ -50,4 +51,8 @@
         font-size: 2rem;
         color: $green;
     }
+}
+
+#withdrawalBtn {
+    width: fit-content;
 }

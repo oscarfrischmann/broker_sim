@@ -404,6 +404,10 @@ body {
   color: #7BD6A9;
 }
 
+#withdrawalBtn {
+  width: fit-content;
+}
+
 .tittle__secondary {
   text-transform: capitalize;
 }

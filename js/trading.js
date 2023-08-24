@@ -26,6 +26,7 @@ let orderType = document.getElementById("orderType");
 let stockSelect = document.getElementById("stocksSelect");
 let stockTickerTittle = document.getElementById("stokTicker");
 let beforeConfirm = document.getElementById("beforeConfirm");
+let position = document.createElement('p');
 
 sellBtn.addEventListener("click", () => {
 	beforeConfirm.innerText = "";
@@ -74,18 +75,6 @@ stockSelect.addEventListener("change", () => {
 		},
 	};
 
-	//*reset quantity after selection
-
-	// setTimeout(() => {
-	// 	// fullQuantity = numberQuantity;
-	// 	// showQuantity.innerText = `Quantity: ${fullQuantity} of ${stockSelect.value} (~${(fullQuantity * selected.realtimePrice).toFixed(2)} USD)`;
-	// 	console.log('fullQuantity', fullQuantity);
-	// 	console.log('stockSelect.value', stockSelect.value);
-	// 	console.log('selected.realtimePrice', selected.realtimePrice);
-	// 	console.log('numberQuantity', numberQuantity);
-	// }, 2000);
-
-
 	(async function () {
 		try {
 			const stockData = await fetch(url, options);
@@ -100,14 +89,26 @@ stockSelect.addEventListener("change", () => {
 				}
 			}
 			console.log(parseStockData);
+			getUserPortfolio();
+			if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
+				const matchingStock = userPortfolio.find(
+					(stockItem) => stockItem.symbol === selected.symbol
+				);
+				const cardContainer = document.getElementById('cardContainer');
+				
+				position.textContent = `${matchingStock.quantity} ${selected.shortName} stocks in portfolio`;
+				cardContainer.appendChild(position);
+			}else{
+				position.textContent = `No ${selected.shortName} stocks in portfolio`;
+				cardContainer.appendChild(position);
+			}
+
 		} catch (e) {
 			console.log("Error", e);
 		}
 	})();
 	console.log(showQuantity);
-
 });
-
 let remove = document.getElementById("remove");
 let add = document.getElementById("add");
 let quantity = document.getElementById("quantity");
@@ -120,7 +121,7 @@ add.addEventListener("click", () => {
 	numberQuantity = Number(quantity.value);
 	fullQuantity += numberQuantity;
 	console.log(fullQuantity);
-	if (fullQuantity * selected.realtimePrice > userCash) {
+	if (fullQuantity * selected.realtimePrice > userCash && orderType.innerText !== 'Sell Order') {
 		showQuantity.innerText = "Not enought money in your account";
 		setTimeout(() => {
 			fullQuantity -= fullQuantity;
@@ -157,9 +158,9 @@ remove.addEventListener("click", () => {
 });
 
 confirmBtn.addEventListener("click", () => {
-	const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
-	userPortfolio = JSON.parse(userPortfolioGETITEM);
-	console.log(userPortfolio);
+	position.textContent = ``;
+
+	getUserPortfolio()
 
 	console.log(fullQuantity);
 	if (selected && fullQuantity > 0) {
@@ -169,9 +170,7 @@ confirmBtn.addEventListener("click", () => {
 				const matchingStock = userPortfolio.find(
 					(stockItem) => stockItem.symbol === selected.symbol
 				);
-				console.log(
-					`You have ${matchingStock.quantity} ${matchingStock.symbol} to SELL`
-				);
+
 				if (matchingStock.quantity < fullQuantity) {
 					console.log("No tienes tantas acciones para vender");
 				} else {
@@ -188,36 +187,14 @@ confirmBtn.addEventListener("click", () => {
 			}
 		} else if (orderType.innerText === "Buy Order") {
 			console.log(`It's a buy order for ${selected.shortName}`);
-			if (userPortfolio.length === 0) {
-				console.log("Primer objeto en userPortfolio");
-				userPortfolio.push(
-					new Stock(
-						selected.symbol,
-						selected.realtimePrice,
-						fullQuantity,
-						selected.averagePrice = 0,
-						selected.stockChange = 0,
-						selected.cost = selected.realtimePrice * fullQuantity,
-						selected.profitLoss = 0,
-					)
-				);
-				substractCash()
+			console.log(quantity.value);
+			console.log(quantity.value * selected.realtimePrice);
+			console.log(userCash);
+			if (quantity.value * selected.realtimePrice > userCash) {
+				console.log('no money')
 			} else {
-				if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
-					console.log("REPETIDA");
-					const matchingStock = userPortfolio.find(
-						(stockItem) => stockItem.symbol === selected.symbol
-					);
-					matchingStock.averagePrice = (matchingStock.totalValue + (fullQuantity * selected.realtimePrice)) / (matchingStock.quantity + fullQuantity);
-					matchingStock.quantity = fullQuantity + matchingStock.quantity;
-					matchingStock.stockChange = selected.realtimePrice - matchingStock.price;
-					matchingStock.price = selected.realtimePrice;
-					matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
-					matchingStock.cost = matchingStock.averagePrice * matchingStock.quantity;
-					matchingStock.profitLoss = matchingStock.totalValue - matchingStock.cost;
-					substractCash()
-				} else {
-					console.log("NO repetida");
+				if (userPortfolio.length === 0) {
+					console.log("Primer objeto en userPortfolio");
 					userPortfolio.push(
 						new Stock(
 							selected.symbol,
@@ -230,6 +207,35 @@ confirmBtn.addEventListener("click", () => {
 						)
 					);
 					substractCash()
+				} else {
+					if (userPortfolio.find((symbol) => symbol.symbol === selected.symbol)) {
+						console.log("REPETIDA");
+						const matchingStock = userPortfolio.find(
+							(stockItem) => stockItem.symbol === selected.symbol
+						);
+						matchingStock.averagePrice = (matchingStock.totalValue + (fullQuantity * selected.realtimePrice)) / (matchingStock.quantity + fullQuantity);
+						matchingStock.quantity = fullQuantity + matchingStock.quantity;
+						matchingStock.stockChange = selected.realtimePrice - matchingStock.price;
+						matchingStock.price = selected.realtimePrice;
+						matchingStock.totalValue = matchingStock.quantity * matchingStock.price;
+						matchingStock.cost = matchingStock.averagePrice * matchingStock.quantity;
+						matchingStock.profitLoss = matchingStock.totalValue - matchingStock.cost;
+						substractCash()
+					} else {
+						console.log("NO repetida");
+						userPortfolio.push(
+							new Stock(
+								selected.symbol,
+								selected.realtimePrice,
+								fullQuantity,
+								selected.averagePrice = 0,
+								selected.stockChange = 0,
+								selected.cost = selected.realtimePrice * fullQuantity,
+								selected.profitLoss = 0,
+							)
+						);
+						substractCash()
+					}
 				}
 			}
 		} else if (orderType.innerText === "") {
@@ -275,5 +281,10 @@ function addCash() {
 	userCash += fullQuantity * selected.realtimePrice;
 	localStorage.setItem('cash', userCash);
 	showCash.innerText = `${userCash.toFixed(2)} USD`;
-
 };
+
+function getUserPortfolio() {
+	const userPortfolioGETITEM = localStorage.getItem("userPortfolio");
+	userPortfolio = JSON.parse(userPortfolioGETITEM);
+	console.log(userPortfolio);
+}

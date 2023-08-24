@@ -8,7 +8,7 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Make a Deposit | BRO.S</title>
+    <title>Make a withdrawal | BRO.S</title>
 </head>
 
 <body class="deposit">
@@ -23,7 +23,7 @@
                 <hr>
                 <li class="burguer__item" id=""><a href="./portfolio.html">portfolio</a></li>
                 <hr>
-                <li class="burguer__item" id=""><a href="./withdrawal.html">withdrawal</a></li>
+                <li class="burguer__item" id=""><a href="">withdrawal</a></li>
             </ul>
         </nav>
     </header>
@@ -36,50 +36,35 @@
         </div>
 
         <section class="deposit__form">
-            <h2 class="tittle__secondary">Make a Deposit</h2>
+            <h2 class="tittle__secondary">Make a withdrawal</h2>
             <div class="deposit__card" id="hideCard">
-                <p>I will transfer the following amount:</p>
+                <p>I will withdrawal the following amount:</p>
                 <label for="userCashInput"></label>
                 <input type="text" name="userCash" id="userCashInput" placeholder="USD" class="deposit__input">
-                <button class="deposit__button" id="depositButton">deposit</button>
+                <button class="deposit__button" id="withdrawalBtn">WITHDRAWAL</button>
             </div>
             <div id="confirmCard" class="display-none">
                 <p id="userConfirmCash"></p>
                 <p>
-                    Your deposit has been made correctly.
+                    Your withdrawal has been made correctly.
                 </p>
             </div>
         </section>
-        <section class="deposit__user-data" id="userData">
-            <button class="display-none add-cash" id="addCashBtn">add cash</button>
-            <button class="display-none start-trading" id="startTrading">start trading</button>
-        </section>
 
-
-        <section class="deposit__add-cash display-none" id="addCash">
-            <div class="deposit__card" id="hideAddCashCard">
-                <p class="deposit__add-cash--p">Add cash to your account</p>
-                <p>Settled Cash: <span id="settledCash"></span></p>
-                <label for="addCashInput"></label>
-                <input type="text" name="userAddCash" id="addCashInput" placeholder="USD" class="deposit__input">
-                <button class="deposit__button" id="addCashConfirm">add cash</button>
+        <footer class="deposit__footer">
+            <div class="register__footer-div">
+                <hr>
+                <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage
+                    account.
+                    Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do
+                    not
+                    deal with real money.</p>
             </div>
-        </section>
-
-
-    </main>
-    <footer class="deposit__footer">
-        <div class="register__footer-div">
-            <hr>
-            <p class="register__footer-p"><span>broker sim</span> is an Interactive simulator of a brokerage account.
-                Simulates buys and sells with real live data. Learn and try before you jump into real markets. We do not
-                deal with real money.</p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
-    <script src="../js/components/burguer-menu.js"></script>
-    <script src="../js/components/open-market.js"></script>
-    <script src="../js/make_deposit.js"></script>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.0/build/global/luxon.min.js"></script>
+        <script src="../js/components/burguer-menu.js"></script>
+        <script src="../js/components/open-market.js"></script>
+        <script src="../js/withdrawal.js"></script>
 </body>
 
 </html>

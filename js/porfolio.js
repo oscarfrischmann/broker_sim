@@ -49,13 +49,10 @@ const tableBody = document.getElementById("tableBody");
 
 userPortfolio.forEach((stock) => {
 	const tableRow = document.createElement("tr");
-
 	const tableDataTicker = document.createElement("td");
 	const tableDataQuantity = document.createElement("td");
 	const tableDataPrice = document.createElement("td");
-	// const tableDataChange = document.createElement("td");
 	const tableDataValue = document.createElement("td");
-
 	const tableDataPL = document.createElement("td");
 	const tableDataCost = document.createElement('td');
 	const tablaDataAveragePrice = document.createElement('td');
@@ -63,14 +60,13 @@ userPortfolio.forEach((stock) => {
 	tableRow.appendChild(tableDataTicker).innerHTML = `${stock.symbol}`;
 	tableRow.appendChild(tableDataQuantity).innerHTML = `${stock.quantity}`;
 	tableRow.appendChild(tableDataPrice).innerHTML = ` ${stock.price}`;
-	// tableRow.appendChild(tableDataChange).innerHTML = ` ${stock.currency}`;
 	tableRow.appendChild(tableDataValue).innerHTML = ` ${parseFloat(stock.totalValue).toFixed(2)}`;
 	tableRow.appendChild(tableDataPL).innerHTML = `${stock.profitLoss.toFixed(2)}`;
 	tableRow.appendChild(tableDataCost).innerHTML = `${stock.cost.toFixed(2)}`;
 	tableRow.appendChild(tablaDataAveragePrice).innerHTML = `${(stock.averagePrice).toFixed(2)}`;
 	stock.profitLoss < 0 ? tableDataPL.style.color = 'red' : tableDataPL.style.color = 'green'
 	tableDataTicker.style.color = 'black';
-	tableDataTicker.style.fontWeight = '600';
+	tableDataTicker.style.fontWeight = '700';
 });
 
 function refreshTable() {

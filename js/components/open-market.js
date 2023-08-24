@@ -62,9 +62,10 @@ if (
 			statusSpan.innerText = 'Market closed';
 			stateOfConfirmBtn(true, 'grey')
 }
-
-// function stateOfConfirmBtn(state, color) {
-// 	const confirmOrder = document.getElementById('confirmOrder');
-// 	confirmOrder.disabled = state;
-// 	confirmOrder.style.backgroundColor = color;
-// }
+//! Comment to Enable SIM outside market hours
+function stateOfConfirmBtn(state, color) {
+	const confirmOrder = document.getElementById('confirmOrder');
+	confirmOrder.disabled = state;
+	confirmOrder.style.backgroundColor = color;
+}
+//!-------------------------------------------------------------
