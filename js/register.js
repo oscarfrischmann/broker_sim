@@ -7,6 +7,7 @@ function registerUser(e) {
 	const userNameInput = registerForm["userName"].value;
 	const userPasswordInput = registerForm["userPassword"].value;
 	const userCountryInput = registerForm["userCountry"].value;
+	const confirmPassword = registerForm["confirmPasswordName"].value;
 
 	const user = {
 		id: 1,
@@ -16,11 +17,14 @@ function registerUser(e) {
 		country: userCountryInput,
 	};
 	do {
-		if (userNameInput && userPasswordInput) {
+		if (userNameInput && userPasswordInput && (userPasswordInput === confirmPassword)) {
 			const userJSON = JSON.stringify(user);
 			const userNameJSON = JSON.stringify(user.name);
 			localStorage.setItem("userName", userNameJSON);
 			localStorage.setItem("user", userJSON);
+			const registerButton = document.getElementById('registerButton');
+			registerButton.style.backgroundColor = "green";
+
 			setTimeout(() => {
 				showSuccessAlertAndRedirect();
 			}, 1000);

@@ -1,7 +1,4 @@
 
-
-
-
 const user = [];
 let userCash = Number(localStorage.getItem("cash"));
 console.log(userCash);
